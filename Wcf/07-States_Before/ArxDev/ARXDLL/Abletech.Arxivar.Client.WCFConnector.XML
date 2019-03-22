@@ -1,0 +1,3732 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Abletech.Arxivar.Client.WCFConnector</name>
+    </assembly>
+    <members>
+        <member name="M:Abletech.Utility.Licensing.MachineKeyValidator.ComputeHash(System.Byte[])">
+            <returns>Array di byte dell'hash</returns>
+        </member>
+        <member name="M:Abletech.Utility.Licensing.MachineKeyValidator.ComputeExecutionPath">
+            <summary>
+            Directory in cui sono in esecuzione
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Abletech.Utility.Licensing.MachineKeyValidator.ComputeMacAddress">
+            <summary>
+            Calcolo il mac address della scheda di rete
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Web.ArxCore.WcfHelper.Session.KeepAliveBindingElement.#ctor(System.UInt32)">
+            <summary>
+            Ctor for Client implementation. (KeepAlive Sender)
+            </summary>
+            <param name="keepAliveTimeout">Timeout in milliseconds.</param>
+        </member>
+        <member name="M:Abletech.Arxivar.Web.ArxCore.WcfHelper.Session.KeepAliveBindingElement.#ctor(System.TimeSpan)">
+            <summary>
+            Ctor for Client implementation. (KeepAlive Sender)
+            </summary>
+            <param name="keepAliveTimeout">Timeout.</param>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.Caching.CacheManager">
+            <summary>
+            Motore che gestise la cache lato client
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Caching.CacheManager.MSEC_WAIT_CLEANER">
+            <summary>
+            Milli secondi di wait fra i vari cleaner
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Caching.CacheManager.MSEC_WAIT_SAVER">
+            <summary>
+            Milli secondi di wait fra i vari saver su disco = 1 minuto
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Caching.CacheManager.MSEC_WAIT_RELOADER">
+            <summary>
+            Milli secondi di wait fra i vari reloader via WCF = 2 minuti
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Caching.CacheManager.MSEC_INVALID_STATIC_CACHE">
+            <summary>
+            Milli secondi per i quali un metodo in cache statica è da ricaricare = 10 minuto
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Caching.CacheManager.SetValidResultForMethod(Abletech.Arxivar.Client.Ref.CacheMethod,Abletech.Arxivar.Entities.Enums.Dm_Cache_Level@,System.Object@)">
+            <summary>
+            Valuta se ha in pancia una chiamata a quel metodo se ancora valida ne valorizza il ResultValue
+            </summary>
+            <param name="invocation"></param>
+            <param name="level"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Caching.CacheManager.Store(Abletech.Arxivar.Client.Ref.CacheMethod,System.DateTime,Abletech.Arxivar.Entities.Enums.Dm_Cache_Level,System.Object)">
+            <summary>
+            Memorizza la call ed il suo risultato
+            </summary>
+            <param name="requestDateTime">DateTime di lancio metodo</param>
+            <param name="level"></param>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Caching.CacheItem.MethodName">
+            <summary>
+            Nome del metodo di riferimento
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Caching.CacheItem.Valid">
+            <summary>
+            indica se questo item di cache è ancora valido
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Interfaces.IWsDocToIxGetReservationInfoCom.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Interfaces.IWsDocToIxGetReservationInfoCom.ListDocnumber">
+            <summary>
+            Lista di dm_tipidocumento di cui si vogliono conoscere solo foglie
+            (gli elementi per i quali è possibile archiviare)
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Interfaces.IWsDocToIxGetReservationInfoCom.Execute">
+            <summary>
+            Metodo da utilizzare per effettuare la chiamata al metodo che si chiama come la classe
+            </summary>
+            <returns>elenco</returns>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Interfaces.IIsInRoles.RoleName">
+            <summary>
+            Nomi dei ruoli da verificare
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Interfaces.IIsInRoles.Execute">
+            <summary>
+            Metodo da utilizzare per effettuare la chiamata al metodo che si chiama come la classe
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Interfaces.IIsInRoles.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Interfaces.IDm_TipiDocumento_GetLeaves.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Interfaces.IDm_TipiDocumento_GetLeaves.ListToFilter">
+            <summary>
+            Lista di dm_tipidocumento di cui si vogliono conoscere solo foglie
+            (gli elementi per i quali è possibile archiviare)
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Interfaces.IDm_TipiDocumento_GetLeaves.Execute">
+            <summary>
+            Metodo da utilizzare per effettuare la chiamata al metodo che si chiama come la classe
+            </summary>
+            <returns>elenco</returns>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.Com.Dm_License.DmLicenseConfigurationLibCom">
+            <summary>
+            Classe per la gestione delle variabili di processo per il workflow.
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Com.Dm_License.Dm_License_ConfigurationCom._userModuleFreeDictionary">
+            <summary>
+            Dizionario che mi dice le associazioni libere per ogni modulo
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Com.Dm_License.Dm_License_ConfigurationCom._userModuleAssociationDictionary">
+            <summary>
+            Dizionario che mi dice per ogni modulo quali sono le associazioni 
+            </summary>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.Com.Dm_License.ServerLicenseInfoCom">
+            <summary>
+            File di licenza di ARXivar
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.ServerLicenseInfoCom.IdLicense">
+            <summary>
+            Identificativo unico della licenza
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.ServerLicenseInfoCom.MachineKey">
+            <summary>
+            Identificativo della macchina su cui la licenza è valida
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.ServerLicenseInfoCom.ActivationCode">
+            <summary>
+            Funzione del buono che è stato utilizzato per il rilascio della licenza SHA-256(Buono)
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.ServerLicenseInfoCom.Note">
+            <summary>
+            Note eventuali che descrivono la licenza
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.ServerLicenseInfoCom.Issuer">
+            <summary>
+            Chi ha rilasciato la licenza -> (Abletech Web Services, ... )
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.ServerLicenseInfoCom.IssuedTo">
+            <summary>
+            Nome del cliente 
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.ServerLicenseInfoCom.UtcIssuedDate">
+            <summary>
+            Data ora si rilascio
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.ServerLicenseInfoCom.Purpose">
+            <summary>
+            Scopo di rilascio: test o produzione
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.ServerLicenseInfoCom.Type">
+            <summary>
+            Per che tipo di abiente: standard,... in futuro cloud...?
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.ServerLicenseInfoCom.ModuleList">
+            <summary>
+            Moduli di licenza: BASE, LITE, FLOW,...
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.ServerLicenseInfoCom.PermissionList">
+            <summary>
+            Lista di permessi/Negazioni su cosa è possibili fare con la licenza. Es posibilità di fare Update del software
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.ServerLicenseInfoCom.ModuleInstallationList">
+            <summary>
+            Lista dei software che sono stati installati con questa licenza
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.IServerLicenseInfoCom.IdLicense">
+            <summary>
+            Identificativo unico della licenza
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.IServerLicenseInfoCom.MachineKey">
+            <summary>
+            Identificativo della macchina su cui la licenza è valida
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.IServerLicenseInfoCom.ActivationCode">
+            <summary>
+            Funzione del buono che è stato utilizzato per il rilascio della licenza SHA-256(Buono)
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.IServerLicenseInfoCom.Note">
+            <summary>
+            Note eventuali che descrivono la licenza
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.IServerLicenseInfoCom.Issuer">
+            <summary>
+            Chi ha rilasciato la licenza -> (Abletech Web Services, ... )
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.IServerLicenseInfoCom.IssuedTo">
+            <summary>
+            Nome del cliente 
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.IServerLicenseInfoCom.UtcIssuedDate">
+            <summary>
+            Data ora si rilascio
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.IServerLicenseInfoCom.Purpose">
+            <summary>
+            Scopo di rilascio: test o produzione
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.IServerLicenseInfoCom.Type">
+            <summary>
+            Per che tipo di abiente: standard,... in futuro cloud...?
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.IServerLicenseInfoCom.ModuleList">
+            <summary>
+            Moduli di licenza: BASE, LITE, FLOW,...
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.IServerLicenseInfoCom.PermissionList">
+            <summary>
+            Lista di permessi/Negazioni su cosa è possibili fare con la licenza. Es posibilità di fare Update del software
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_License.IServerLicenseInfoCom.ModuleInstallationList">
+            <summary>
+            Lista dei software che sono stati installati con questa licenza
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.DmModuliOffice.Dm_CampiModuliCom.Dm_CampiModuliLibCom_Insert(System.Int32,Abletech.Arxivar.Client.Com.Utility.ListDmCampiModuliLibCom,Abletech.Arxivar.Entities.Exceptions.ArxGenericException@)">
+            <summary>
+            Inserisce i campi mel modello di office
+            </summary>
+            <param name="idModulo"></param>
+            <param name="listDmCampiModuliLibCom"></param>
+            <param name="securtityException"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.DmModuliOffice.Dm_CampiModuliCom.Dm_CampiModuliLibCom_Update(System.Int32,Abletech.Arxivar.Client.Com.Utility.ListDmCampiModuliLibCom,Abletech.Arxivar.Entities.Exceptions.ArxGenericException@)">
+            <summary>
+            Aggiorna i campi mel modello di office
+            </summary>
+            <param name="idModulo"></param>
+            <param name="listDmCampiModuliLibCom"></param>
+            <param name="securtityException"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_PluginCustomWfLib.Dm_PluginCustomWfLibCom.RealEntity">
+            <summary>
+            Entità vera
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_ProcBatch.Dm_ProcBatch_Insert_Multiple.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Assign.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Assign.Id">
+            <summary>
+            Id della Dm_TaskWork
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Assign.UsersId">
+            <summary>
+            Lista degli id utenti
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Assign.Execute">
+            <summary>
+            Metodo da utilizzare per effettuare la chiamata al metodo che si chiama come la classe
+            </summary>
+            <returns>elenco</returns>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.DM_Taskwork_Can_MultipleFinalize_And_SetGroups.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.DM_Taskwork_Can_MultipleFinalize_And_SetGroups.Ids">
+            <summary>
+            Lista di ID di Dm_TaskWork
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Dm_TaskWork.DM_Taskwork_Can_MultipleFinalize_And_SetGroups.Execute">
+            <summary>
+            Metodo da utilizzare per effettuare la chiamata al metodo che si chiama come la classe
+            </summary>
+            <returns>elenco</returns>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Can_Finalize.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Can_Finalize.Ids">
+            <summary>
+            Lista di ID di Dm_TaskWork
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Can_Finalize.Execute">
+            <summary>
+            Metodo da utilizzare per effettuare la chiamata al metodo che si chiama come la classe
+            </summary>
+            <returns>elenco</returns>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Can_Finalize_By_Esito_Password.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Can_Finalize_By_Esito_Password.Ids">
+            <summary>
+            Lista di ID di Dm_TaskWork
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Can_Finalize_By_Esito_Password.Password">
+            <summary>
+            Password necessaria per la conclusione del task
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Can_Finalize_By_Esito_Password.Esito">
+            <summary>
+            Esito scelto per la conclusione del task
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Can_Finalize_By_Esito_Password.Execute">
+            <summary>
+            Metodo da utilizzare per effettuare la chiamata al metodo che si chiama come la classe
+            </summary>
+            <returns>elenco</returns>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Can_MultipleFinalize.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Can_MultipleFinalize.Ids">
+            <summary>
+            Lista di ID di Dm_TaskWork
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Can_MultipleFinalize.Execute">
+            <summary>
+            Metodo da utilizzare per effettuare la chiamata al metodo che si chiama come la classe
+            </summary>
+            <returns>elenco</returns>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Finalize.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Finalize.Ids">
+            <summary>
+            Lista di ID di Dm_TaskWork
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Finalize.Password">
+            <summary>
+            Password necessaria per la conclusione del task
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Finalize.Esito">
+            <summary>
+            Esito scelto per la conclusione del task
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Finalize.Nota">
+            <summary>
+            Nota da aggiungere al processo in fase di conclusione del task
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Finalize.ServerSide">
+            <summary>
+            Indica se delegare l'avanzamento vero e proprio lato server
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Finalize.Execute">
+            <summary>
+            Metodo da utilizzare per effettuare la chiamata al metodo che si chiama come la classe
+            </summary>
+            <returns>elenco</returns>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Get_Esiti_For_Finalize.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Get_Esiti_For_Finalize.Ids">
+            <summary>
+            Lista di ID di Dm_TaskWork
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_Taskwork_Get_Esiti_For_Finalize.Execute">
+            <summary>
+            Metodo da utilizzare per effettuare la chiamata al metodo che si chiama come la classe
+            </summary>
+            <returns>elenco</returns>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_TaskWork_Set_Priorita.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_TaskWork_Set_Priorita.Ids">
+            <summary>
+            Lista di ID di Dm_TaskWork
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_TaskWork_Set_Priorita.Priorita">
+            <summary>
+            Indica il valore di LETTO per il record di Dm_Taskwork
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_TaskWork_Set_Priorita.Execute">
+            <summary>
+            Metodo da utilizzare per effettuare la chiamata al metodo che si chiama come la classe
+            </summary>
+            <returns>elenco</returns>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_TaskWork_Set_Letto.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_TaskWork_Set_Letto.Ids">
+            <summary>
+            Lista di ID di Dm_TaskWork
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_TaskWork_Set_Letto.Letto">
+            <summary>
+            Indica il valore di LETTO per il record di Dm_Taskwork
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Dm_TaskWork.Dm_TaskWork_Set_Letto.Execute">
+            <summary>
+            Metodo da utilizzare per effettuare la chiamata al metodo che si chiama come la classe
+            </summary>
+            <returns>elenco</returns>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TipiDocumento.Dm_TipiDocumento_GetLeaves.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_TipiDocumento.Dm_TipiDocumento_GetLeaves.ListToFilter">
+            <summary>
+            Lista di dm_tipidocumento di cui si vogliono conoscere solo foglie
+            (gli elementi per i quali è possibile archiviare)
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Dm_TipiDocumento.Dm_TipiDocumento_GetLeaves.Execute">
+            <summary>
+            Metodo da utilizzare per effettuare la chiamata al metodo che si chiama come la classe
+            </summary>
+            <returns>elenco</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Search.Base_Search_Utility.AnyFieldSet(Abletech.Arxivar.Entities.Search.IDm_Base_Search)">
+            <summary>
+            Data una base_search mi dice se c'è qualche filtro where settato.
+            Serve al client per stabilire se lasciare eseguire le viste senza parametri
+            </summary>
+            <param name="baseSearch"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Search.Base_Search_Utility.AnyFieldSet(Abletech.Arxivar.Entities.Search.IDm_Base_Search,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            IDm_Base_Search 
+            </summary>
+            <param name="baseSearch"></param>
+            <param name="sensitivityDictionary">Se != null vengono verificati solo i campi specificati</param>
+            <returns></returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Search.Base_Search_Utility.AnyFieldSet(Abletech.Arxivar.Entities.Interfacce.IJoinRicerca,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Ricerca nelle join
+            </summary>
+            <param name="join"></param>
+            <param name="sensitivityDictionary"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Search.Base_Search_Utility.AnyFieldSet(System.Object,System.Reflection.PropertyInfo,System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
+            <summary>
+            Verifica su singola property
+            </summary>
+            <param name="baseSearch"></param>
+            <param name="property"></param>
+            <param name="sensitivityDictionary">Se != null vengono verificati solo i campi specificati</param>
+            <param name="tablePrefix"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Search.Base_Search_Utility.BuildSensitivityFieldDictionary(System.String)">
+            <summary>
+            Costruisce il dizionario con i campi di sensitività: case insensitive
+            </summary>
+            <param name="campiEdit"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Search.Dm_UtentiBase_GetData_FromArray.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Search.Dm_UtentiBase_GetData_FromArray.InitSearchList(Abletech.Arxivar.Client.Com.Utility.ListInt)">
+            <summary>
+            Questo metodo fa il reset della SearchList e si popola una lista di Dm_Profile_Search splittando di mille in mille i docnumber
+            </summary>
+            <param name="docNumberList"></param>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Search.Dm_Profile_GetData_FromArray.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Search.Dm_Profile_GetData_FromArray.InitSearchList(Abletech.Arxivar.Client.Com.Utility.ListInt)">
+            <summary>
+            Questo metodo fa il reset della SearchList e si popola una lista di Dm_Profile_Search splittando di mille in mille i docnumber
+            </summary>
+            <param name="docNumberList"></param>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Search.Dm_Base_Search_Write_ByIdFind.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Search.Dm_Contatti_GetData_FromArray.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.Com.Sign.RemoteSignAsyncCollectionCom">
+            <summary>
+            Classe ponte com per effettuare la firma asincrona massiva tramite CoSign
+            </summary>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.Com.Sign.RemoteSignWfOperationTaskCom">
+            <summary>
+            Classe ponte com per effettuare eseguire le operazioni di firma per il task del workflow
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Sign.SignHelper.GetTimeStampAtMinimumDepth(Abletech.Arxivar.Client.Com.Utility.Sign.ListTimeStampInfo)">
+            <summary>
+            Data una lista di timestamp mi prende il primo a profondità più bassa -> l'obiettivo è recuperare la marcatura più esterna
+            </summary>
+            <param name="listTimestampInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Utility.ArxDomainList.GetListDomain">
+            <summary>
+            Funzione per la ricerca dei domini visibili
+            </summary>
+            <returns>Torna una lista doi stringhe contenenti l'elenco dei nomi dei domini trovati</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Utility.Interfaces.IArxThreadSleep.Sleep(System.Int32)">
+            <summary>
+            Esegue un Thread.Sleep
+            </summary>
+            <param name="millisecondsTimeout">Tempo espresso in millisecondi</param>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Utility.ListDmMaskTipidoUtenti.#ctor">
+            <summary>
+            Costruttore
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Utility.Sign.ListSignSignInfo.GetSignInfoFromSignSignInfo(Abletech.Arxivar.Client.Com.Utility.Sign.Interfaces.ISignSignInfo)">
+            <summary>
+            Mappo un oggetto di tipo SignSignInfo su SignInfo
+            </summary>
+            <param name="signSignInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Utility.Sign.PdfSignProperties.Page">
+            <summary>
+            Il numero di pagina del documento PDF su cui posizionare
+            l’oggetto grafico della firma.
+            1 = prima pagina
+            Il valore speciale “-1” permette di specificare ultima pagina
+            del documento.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Utility.Sign.PdfSignProperties.Position">
+            <summary>
+            Il posizionamento del rettangolo che contiene l’oggetto
+            grafico della firma sulla pagina, espresso in coordinate
+            (millimetri). L’angolo in alto a sinistra è 0, 0.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Utility.Sign.PdfSignProperties.Size">
+            <summary>
+            Le dimensioni (orizzontale e verticale, rispettivamente), in
+            millimetri, del rettangolo che contiene l’oggetto grafico della
+            firma sulla pagina.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Utility.Sign.PdfSignProperties.Image">
+            <summary>
+            Il nome del file, completo di percorso, che rappresenta
+            l’immagine da inserire nell’oggetto grafico della firma. In
+            generale si tratterà dell’immagine scansionata della firma di
+            pugno del sottoscrittore, utile a rendere più familiare –
+            visivamente – la firma digitale.
+            Se nullo non verrà inserita alcuna immagine.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Utility.Sign.PdfSignProperties.Reason">
+            <summary>
+            Una stringa di testo che indica il motivo della firma (es.:
+            ‘Approvo il documento’, ‘Per accettazione’, ecc).
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Utility.Sign.PdfSignProperties.ShowCN">
+            <summary>
+            Include l'etichetta Common Name
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Utility.Sign.PdfSignProperties.ShowEmail">
+            <summary>
+            Include l'etichetta Indirizzo e-mail
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Utility.Sign.PdfSignProperties.ShowCF">
+            <summary>
+            Include l'etichetta Codice Fiscale
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Utility.Sign.PdfSignProperties.ShowRole">
+            <summary>
+            Include l'etichetta Ruolo
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Utility.Sign.PdfSignProperties.ShowValid">
+            <summary>
+            Include l'etichetta Periodo di validità del certificato
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Utility.Sign.PdfSignProperties.ShowIssuer">
+            <summary>
+            Include l'etichetta Certificato emesso da
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Utility.Sign.PdfSignProperties.ShowTime">
+            <summary>
+            Include l'etichetta Data e ora della firma
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Utility.Sign.PdfSignProperties.#ctor">
+            <summary>
+            Costruttore con inizializzazione parametri di default
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Utility.Sign.SignInfo.#ctor(System.String)">
+            <summary>
+            Inizializzazione dell'oggetto in caso di errore fatale
+            </summary>
+            <param name="warningMessage"></param>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Utility.Sign.SignInfo.#ctor(System.Boolean,System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String,System.String,System.String,System.String,Abletech.Arxivar.Client.Com.Utility.Sign.CertifiedIdentity,Abletech.Arxivar.Client.Com.Utility.Sign.CertifiedIdentity,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Nullable{System.DateTime},System.String)">
+            <summary>
+            Inizializzazoine dell'oggetto nel caso in cui siano state estretta tutte le informazioni necessarie
+            </summary>
+            <param name="isValid"></param>
+            <param name="certName"></param>
+            <param name="serial"></param>
+            <param name="notAfter"></param>
+            <param name="notBefore"></param>
+            <param name="version"></param>
+            <param name="subjectPublicKeyInfo"></param>
+            <param name="hashAlgorithm"></param>
+            <param name="hashEncryptionAlgorithm"></param>
+            <param name="signatureAlgorithm"></param>
+            <param name="issuer"></param>
+            <param name="subject"></param>
+            <param name="otherData"></param>
+            <param name="extensions"></param>
+            <param name="signDateTime"></param>
+            <param name="warningMessage"></param>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Utility.Sign.SignInfo.WarningMessage">
+            <summary>
+            Warning message
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Utility.Sign.SignInfo.SignDepth">
+            <summary>
+            Mi dice la profondità della firma nei livelli di imbustatura
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Com.Utility.Sign.TimeStampInfo._generalizedTime">
+            <summary>
+            Data di marcatura
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Com.Utility.Sign.TimeStampInfo._serial">
+            <summary>
+            seriale della marcatura
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Com.Utility.Sign.TimeStampInfo._tsa">
+            <summary>
+            Certificato del TSA che ha marcato
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Utility.ListDmDesktop.#ctor">
+            <summary>
+            Costruttore
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Utility.ListDmElencoRicerche.#ctor">
+            <summary>
+            Costruttore
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Utility.ListDmFascicoli.#ctor">
+            <summary>
+            Costruttore
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Utility.ListDmFind.#ctor">
+            <summary>
+            Costruttore
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Utility.ListDmMask.#ctor">
+            <summary>
+            Costruttore
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Utility.ListDmModuliOffice.#ctor">
+            <summary>
+            Costruttore
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Utility.ListDmProfile.#ctor">
+            <summary>
+            Costruttore
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Utility.ListDmMaskDetail.#ctor">
+            <summary>
+            Costruttore
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Utility.Field_Abstract_Manager.SearchAndSetField_String_FromDm_Profile_Search(Abletech.Arxivar.Entities.Search.Dm_Profile_Search,System.String,System.String,System.String,Abletech.Arxivar.Entities.Enums.Dm_Base_Search_Operatore_String,System.Boolean)">
+            <summary>
+            Funzione che ha il compito di cercare il campo aggiuntivo che ha come nome il parametro sCampo, e di valorizzare le proprietà di filtro in base al valore dei parametri passati
+            </summary>
+            <param name="dmProfileSearch">Oggetto dm_profile_search del client, da cui estrarre l'elenco di aggiuntivi</param>
+            <param name="sCampo">Nome del campo aggiuntivo da cercare</param>
+            <param name="valore">Valore da impostare nella proprietà valore dell'aggiuntivo trovato</param>
+            <param name="multiple">Valore da impostare nella proprietà multiple dell'aggiuntivo trovato</param>
+            <param name="Operatore">Operatore da impostare nella proprietà operatore dell'aggiuntivo trovato</param>
+            <param name="throwNewExceptionIfNotFound">Indica se la funzione dovrà alzare una eccezione nel caso in cui non trovasse il campo agiuntivo o meno</param>
+            <returns>true se il campo è stato trovato ed valorizzato, false (solo nel caso in cui throwNewExceptionIfNotFound = false) se non è stato troato il campo aggiuntivo</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Utility.Field_Abstract_Manager.SearchAndSetField_Int_FromDm_Profile_Search(Abletech.Arxivar.Entities.Search.Dm_Profile_Search,System.String,System.Int32,System.Int32,System.String,Abletech.Arxivar.Entities.Enums.Dm_Base_Search_Operatore_Numerico,System.Boolean)">
+            <summary>
+            Funzione che ha il compito di cercare il campo aggiuntivo che ha come nome il parametro sCampo, e di valorizzare le proprietà di filtro in base al valore dei parametri passati
+            </summary>
+            <param name="dmProfileSearch">Oggetto dm_profile_search del client, da cui estrarre l'elenco di aggiuntivi</param>
+            <param name="sCampo">Nome del campo aggiuntivo da cercare</param>
+            <param name="valore">Valore da impostare nella proprietà valore dell'aggiuntivo trovato</param>
+            <param name="valore2">Valore da impostare nella proprietà valore2 dell'aggiuntivo trovato</param>
+            <param name="multiple">Valore da impostare nella proprietà multiple dell'aggiuntivo trovato</param>
+            <param name="Operatore">Operatore da impostare nella proprietà operatore dell'aggiuntivo trovato</param>
+            <param name="throwNewExceptionIfNotFound">Indica se la funzione dovrà alzare una eccezione nel caso in cui non trovasse il campo agiuntivo o meno</param>
+            <returns>true se il campo è stato trovato ed valorizzato, false (solo nel caso in cui throwNewExceptionIfNotFound = false) se non è stato troato il campo aggiuntivo</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Utility.Field_Abstract_Manager.SearchAndSetField_DateTime_FromDm_Profile_Search(Abletech.Arxivar.Entities.Search.Dm_Profile_Search,System.String,System.DateTime,System.DateTime,System.String,Abletech.Arxivar.Entities.Enums.Dm_Base_Search_Operatore_Numerico,System.Boolean)">
+            <summary>
+            Funzione che ha il compito di cercare il campo aggiuntivo che ha come nome il parametro sCampo, e di valorizzare le proprietà di filtro in base al valore dei parametri passati
+            </summary>
+            <param name="dmProfileSearch">Oggetto dm_profile_search del client, da cui estrarre l'elenco di aggiuntivi</param>
+            <param name="sCampo">Nome del campo aggiuntivo da cercare</param>
+            <param name="valore">Valore da impostare nella proprietà valore dell'aggiuntivo trovato</param>
+            <param name="valore2">Valore da impostare nella proprietà valore2 dell'aggiuntivo trovato</param>
+            <param name="multiple">Valore da impostare nella proprietà multiple dell'aggiuntivo trovato</param>
+            <param name="Operatore">Operatore da impostare nella proprietà operatore dell'aggiuntivo trovato</param>
+            <param name="throwNewExceptionIfNotFound">Indica se la funzione dovrà alzare una eccezione nel caso in cui non trovasse il campo agiuntivo o meno</param>
+            <returns>true se il campo è stato trovato ed valorizzato, false (solo nel caso in cui throwNewExceptionIfNotFound = false) se non è stato troato il campo aggiuntivo</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Utility.Field_Abstract_Manager.SearchAndSetField_MultiValue_FromDm_Profile_Search(Abletech.Arxivar.Entities.Search.Dm_Profile_Search,System.String,Abletech.Arxivar.Client.Com.Utility.ListString,System.Boolean,Abletech.Arxivar.Entities.Enums.Dm_Base_Search_Operatore_String,System.Boolean)">
+            <summary>
+            Funzione che ha il compito di valorizzare tutti i field_string di un campo multivalue
+            </summary>
+            <param name="dmProfileSearch">Oggetto dm_profile_search del client, da cui estrarre l'elenco di aggiuntivi</param>
+            <param name="sCampo">Nome del campo aggiuntivo da cercare</param>
+            <param name="values">E' l'oggetto Aggiuntivo_MultiValue compilato lato client a con il quale passo a questa funzione un elenco di stringhe</param>
+            <param name="Operatore">Operatore da impostare nella proprietà operatore dell'aggiuntivo trovato</param>
+            <param name="throwNewExceptionIfNotFound">Indica se la funzione dovrà alzare una eccezione nel caso in cui non trovasse il campo agiuntivo o meno</param>
+            <returns>true se il campo è stato trovato ed valorizzato, false (solo nel caso in cui throwNewExceptionIfNotFound = false) se non è stato troato il campo aggiuntivo</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Utility.Field_Abstract_Manager.SearchAndSetField_Double_FromDm_Profile_Search(Abletech.Arxivar.Entities.Search.Dm_Profile_Search,System.String,System.Double,System.Double,System.String,Abletech.Arxivar.Entities.Enums.Dm_Base_Search_Operatore_Numerico,System.Boolean)">
+            <summary>
+            Funzione che ha il compito di cercare il campo aggiuntivo che ha come nome il parametro sCampo, e di valorizzare le proprietà di filtro in base al valore dei parametri passati
+            </summary>
+            <param name="dmProfileSearch">Oggetto dm_profile_search del client, da cui estrarre l'elenco di aggiuntivi</param>
+            <param name="sCampo">Nome del campo aggiuntivo da cercare</param>
+            <param name="valore">Valore da impostare nella proprietà valore dell'aggiuntivo trovato</param>
+            <param name="valore2">Valore da impostare nella proprietà valore2 dell'aggiuntivo trovato</param>
+            <param name="multiple">Valore da impostare nella proprietà multiple dell'aggiuntivo trovato</param>
+            <param name="Operatore">Operatore da impostare nella proprietà operatore dell'aggiuntivo trovato</param>
+            <param name="throwNewExceptionIfNotFound">Indica se la funzione dovrà alzare una eccezione nel caso in cui non trovasse il campo agiuntivo o meno</param>
+            <returns>true se il campo è stato trovato ed valorizzato, false (solo nel caso in cui throwNewExceptionIfNotFound = false) se non è stato troato il campo aggiuntivo</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Utility.ListFieldValue.#ctor">
+            <summary>
+            Costruttore
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_Profile.Dm_Profile_ForUpdate_GetNewInstance_By_DocNumber_And_DocumentType.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_Profile.Dm_Profile_ForUpdate_GetNewInstance_By_DocNumber_And_DocumentType.Docnumber">
+            <summary>
+            Id del documento in ARXivar
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_Profile.Dm_Profile_ForUpdate_GetNewInstance_By_DocNumber_And_DocumentType.DocumentType">
+            <summary>
+            Id del documento in ARXivar
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Dm_Profile.Dm_Profile_ForUpdate_GetNewInstance_By_DocNumber_And_DocumentType.#ctor">
+            <summary>
+            Constructor
+            Initialize the properties
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_Profile.Dm_Profile_ForUpdate_GetNewInstance.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_Profile.Dm_Profile_ForUpdate_GetNewInstance.Docnumber">
+            <summary>
+            Id del documento in ARXivar
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Dm_Profile.Dm_Profile_ForUpdate_GetNewInstance.#ctor">
+            <summary>
+            Constructor
+            Initialize the properties
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Com.Dm_Profile_MV.Dm_Profile_MV._dmProfileMv">
+            <summary>
+            Proprietà che fungerà da base per il ponte com
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Dm_Profile_MV.Dm_Profile_MV.#ctor">
+            <summary>
+            Costruttore vuoto
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Com.Dm_MaskDetail.Dm_Profile_Insert_MV._Dm_Profile_Insert_MV">
+            <summary>
+            Proprietà che fungerà da base per il ponte com
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Dm_MaskDetail.Dm_Profile_Insert_MV.#ctor">
+            <summary>
+            Costruttore vuoto
+            </summary>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.Com.Plugin.Arx_SignCert_Convert">
+            <summary>
+            Utility for Arx_SignCert serialization
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Plugin.Arx_SignCert_Convert.Get_Arx_SignCert_From_Object_To_String(Abletech.Arxivar.Entities.Libraries.Arx_SignCert)">
+            <summary>
+            Converts Arx_SignCert object into string by serialization
+            </summary>
+            <param name="signCert">Object to be serialized</param>
+            <returns></returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Plugin.Arx_SignCert_Convert.Get_Arx_SignCert_From_String_To_Object(System.String)">
+            <summary>
+            Coverts a string into Arx_SignCert Object
+            </summary>
+            <param name="signCertString">Serialized Arx_SignCert object</param>
+            <returns></returns>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_Rubrica.Dm_Rubrica_ForInsert_GetNewInstance_By_DmCatRubricheId.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_Rubrica.Dm_Rubrica_ForInsert_GetNewInstance_By_DmCatRubricheId.DmCatRubricheId">
+            <summary>
+            Id del documento in ARXivar
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Dm_Rubrica.Dm_Rubrica_ForInsert_GetNewInstance_By_DmCatRubricheId.#ctor">
+            <summary>
+            Constructor
+            Initialize the properties
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_Rubrica.Dm_Rubrica_ForUpdate_GetNewInstance_By_SystemId.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_Rubrica.Dm_Rubrica_ForUpdate_GetNewInstance_By_SystemId.SystemId">
+            <summary>
+            Id del documento in ARXivar
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Dm_Rubrica.Dm_Rubrica_ForUpdate_GetNewInstance_By_SystemId.#ctor">
+            <summary>
+            Constructor
+            Initialize the properties
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_RemoveExclusivePermissions.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_RemoveExclusivePermissions.ListUser">
+            <summary>
+            Elenco utenti
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_RemoveExclusivePermissions.Docnumber">
+            <summary>
+            Documento su cui si lavora
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_RemoveExclusivePermissions.ExternalId">
+            <summary>
+            Codice esterna
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_RemoveExclusivePermissions.Execute">
+            <summary>
+            Metodo da utilizzare per effettuare la chiamata al metodo che si chiama come la classe
+            </summary>
+            <returns>elenco</returns>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_RemoveAdditionalPermissions.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_RemoveAdditionalPermissions.ListUser">
+            <summary>
+            Elenco utenti
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_RemoveAdditionalPermissions.Docnumber">
+            <summary>
+            Documento su cui si lavora
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_RemoveAdditionalPermissions.ExternalId">
+            <summary>
+            Codice esterna
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_RemoveAdditionalPermissions.Execute">
+            <summary>
+            Metodo da utilizzare per effettuare la chiamata al metodo che si chiama come la classe
+            </summary>
+            <returns>elenco</returns>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddAdditionalAuthorizations.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddAdditionalAuthorizations.ListUser">
+            <summary>
+            Elenco utenti
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddAdditionalAuthorizations.Docnumber">
+            <summary>
+            Documento su cui si lavora
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddAdditionalAuthorizations.Aos">
+            <summary>
+            Abilitazine a conservare il documento
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddAdditionalAuthorizations.Firma">
+            <summary>
+            Abilitazione a firmare il documento
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddAdditionalAuthorizations.DeleteDoc">
+            <summary>
+            Abilitazione ad eliminare il documento
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddAdditionalAuthorizations.Revisioni">
+            <summary>
+            Abilitazione ad accedere alle revisioni
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddAdditionalAuthorizations.EditDoc">
+            <summary>
+            Abilitazione ad eliminare il documento
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddAdditionalAuthorizations.EditProfilo">
+            <summary>
+            Abiliatazione ad eliminare il profilo del documento
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddAdditionalAuthorizations.ExternalId">
+            <summary>
+            Eventuale codice esterno da assegnare al permesso
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddAdditionalAuthorizations.SendNotify">
+            <summary>
+            Indica se spedire le notifiche
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddAdditionalAuthorizations.Execute">
+            <summary>
+            Metodo da utilizzare per effettuare la chiamata al metodo che si chiama come la classe
+            </summary>
+            <returns>elenco</returns>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddExclusiveAuthorizations.WcfCnnManager">
+            <summary>
+            Istanza di wcf conn manager istanziata nel chiamante
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddExclusiveAuthorizations.ListUser">
+            <summary>
+            Elenco utenti
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddExclusiveAuthorizations.Docnumber">
+            <summary>
+            Documento su cui si lavora
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddExclusiveAuthorizations.Aos">
+            <summary>
+            Abilitazine a conservare il documento
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddExclusiveAuthorizations.Firma">
+            <summary>
+            Abilitazione a firmare il documento
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddExclusiveAuthorizations.DeleteDoc">
+            <summary>
+            Abilitazione ad eliminare il documento
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddExclusiveAuthorizations.Revisioni">
+            <summary>
+            Abilitazione ad accedere alle revisioni
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddExclusiveAuthorizations.EditDoc">
+            <summary>
+            Abilitazione ad eliminare il documento
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddExclusiveAuthorizations.EditProfilo">
+            <summary>
+            Abiliatazione ad eliminare il profilo del documento
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddExclusiveAuthorizations.ExternalId">
+            <summary>
+            Eventuale codice esterno da assegnare al permesso
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddExclusiveAuthorizations.SendNotify">
+            <summary>
+            Indica se spedire le notifiche
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Dm_SecurityDoc.Dm_SecurityDoc_AddExclusiveAuthorizations.Execute">
+            <summary>
+            Metodo da utilizzare per effettuare la chiamata al metodo che si chiama come la classe
+            </summary>
+            <returns>elenco</returns>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Roles.IsInRoles.RoleName">
+            <summary>
+            Elenco dei ruoli da verificare
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Com.Roles.IsInRoles.Execute">
+            <summary>
+            Esecuzione del metodo IsInRoles
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Com.Roles.IsInRoles.WcfCnnManager">
+            <summary>
+            Istanza del wcfconnector manager che verrà utilizzato per la connessione ad Arxivar
+            </summary>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.Com.ArraySource">
+            <summary>
+            Classe che implementa un oggetto IArraySource per la gestione degli array di Entity
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WcfConnector.Interfaces.IWCFConnectorManager.LastException">
+            <summary>
+            Indica l'ultima eccezione ricevuta dal server
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WcfConnector.Interfaces.IWCFConnectorManager.WaitForReconnect">
+            <summary>
+            Indica se il wcfconnectorManager è in attesa per riconnessione
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WcfConnector.Interfaces.IWCFConnectorManager.AutoReconnect">
+            <summary>
+            Indica se wcf connector si deve occupare dell'autoriconnessione al server di push se cade la connessione
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WcfConnector.Interfaces.IWCFConnectorManager.ConnectionState">
+            <summary>
+            Stato di connessione verso il server di arxivar
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WcfConnector.Interfaces.IWCFConnectorManager.ClientId">
+            <summary>
+            Indica il nome del software che sta ostando il wcfconnector
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WcfConnector.Interfaces.IWCFConnectorManager.url_ARX_UTILITY">
+            <summary>
+            url del servizio Utility
+            </summary>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.WcfConnector.Interfaces.EConnectionState">
+            <summary>
+            Enumerativo che identifica lo stato della connessione con i servizi WCF
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.WcfConnector.Interfaces.EConnectionState.Opening">
+            <summary>
+            La connessione sta per essere attivata
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.WcfConnector.Interfaces.EConnectionState.Opened">
+            <summary>
+            La connessione è attiva
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.WcfConnector.Interfaces.EConnectionState.Faulted">
+            <summary>
+            La connessione è in stato di errore
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.WcfConnector.Interfaces.EConnectionState.Closed">
+            <summary>
+            La connessione è chiusa
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WcfConnector.Utility.Field_Abstract_Manager.SearchAndSetField_StringFromFiledsAbstract(Abletech.Arxivar.Entities.Search.Field_Abstract[],System.String,System.String,System.String,Abletech.Arxivar.Entities.Enums.Dm_Base_Search_Operatore_String,System.Boolean)">
+            <summary>
+            Funzione che ha il compito di cercare il campo aggiuntivo che ha come nome il parametro sCampo, e di valorizzare le proprietà di filtro in base al valore dei parametri passati
+            </summary>
+            <param name="aggiuntivi">Elenco dei campi aggiuntivi da trattare</param>
+            <param name="sCampo">Nome del campo aggiuntivo da cercare</param>
+            <param name="valore">Valore da impostare nella proprietà valore dell'aggiuntivo trovato</param>
+            <param name="multiple">Valore da impostare nella proprietà multiple dell'aggiuntivo trovato</param>
+            <param name="Operatore">Operatore da impostare nella proprietà operatore dell'aggiuntivo trovato</param>
+            <param name="throwNewExceptionIfNotFound">Indica se la funzione dovrà alzare una eccezione nel caso in cui non trovasse il campo agiuntivo o meno</param>
+            <returns>true se il campo è stato trovato ed valorizzato, false (solo nel caso in cui throwNewExceptionIfNotFound = false) se non è stato troato il campo aggiuntivo</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WcfConnector.Utility.Field_Abstract_Manager.SearchAndSetField_IntFromFiledsAbstract(Abletech.Arxivar.Entities.Search.Field_Abstract[],System.String,System.Int32,System.Int32,System.String,Abletech.Arxivar.Entities.Enums.Dm_Base_Search_Operatore_Numerico,System.Boolean)">
+            <summary>
+            Funzione che ha il compito di cercare il campo aggiuntivo che ha come nome il parametro sCampo, e di valorizzare le proprietà di filtro in base al valore dei parametri passati
+            </summary>
+            <param name="aggiuntivi">Elenco dei campi aggiuntivi da trattare</param>
+            <param name="sCampo">Nome del campo aggiuntivo da cercare</param>
+            <param name="valore">Valore da impostare nella proprietà valore dell'aggiuntivo trovato</param>
+            <param name="valore2">Valore da impostare nella proprietà valore2 dell'aggiuntivo trovato</param>
+            <param name="multiple">Valore da impostare nella proprietà multiple dell'aggiuntivo trovato</param>
+            <param name="Operatore">Operatore da impostare nella proprietà operatore dell'aggiuntivo trovato</param>
+            <param name="throwNewExceptionIfNotFound">Indica se la funzione dovrà alzare una eccezione nel caso in cui non trovasse il campo agiuntivo o meno</param>
+            <returns>true se il campo è stato trovato ed valorizzato, false (solo nel caso in cui throwNewExceptionIfNotFound = false) se non è stato troato il campo aggiuntivo</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WcfConnector.Utility.Field_Abstract_Manager.SearchAndSetField_DateTimeFromFiledsAbstract(Abletech.Arxivar.Entities.Search.Field_Abstract[],System.String,System.DateTime,System.DateTime,System.String,Abletech.Arxivar.Entities.Enums.Dm_Base_Search_Operatore_Numerico,System.Boolean)">
+            <summary>
+            Funzione che ha il compito di cercare il campo aggiuntivo che ha come nome il parametro sCampo, e di valorizzare le proprietà di filtro in base al valore dei parametri passati
+            </summary>
+            <param name="aggiuntivi">Elenco dei campi aggiuntivi da trattare</param>
+            <param name="sCampo">Nome del campo aggiuntivo da cercare</param>
+            <param name="valore">Valore da impostare nella proprietà valore dell'aggiuntivo trovato</param>
+            <param name="valore2">Valore da impostare nella proprietà valore2 dell'aggiuntivo trovato</param>
+            <param name="multiple">Valore da impostare nella proprietà multiple dell'aggiuntivo trovato</param>
+            <param name="Operatore">Operatore da impostare nella proprietà operatore dell'aggiuntivo trovato</param>
+            <param name="throwNewExceptionIfNotFound">Indica se la funzione dovrà alzare una eccezione nel caso in cui non trovasse il campo agiuntivo o meno</param>
+            <returns>true se il campo è stato trovato ed valorizzato, false (solo nel caso in cui throwNewExceptionIfNotFound = false) se non è stato troato il campo aggiuntivo</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WcfConnector.Utility.Field_Abstract_Manager.SearchAndSetField_DoubleFromFiledsAbstract(Abletech.Arxivar.Entities.Search.Field_Abstract[],System.String,System.Double,System.Double,System.String,Abletech.Arxivar.Entities.Enums.Dm_Base_Search_Operatore_Numerico,System.Boolean)">
+            <summary>
+            Funzione che ha il compito di cercare il campo aggiuntivo che ha come nome il parametro sCampo, e di valorizzare le proprietà di filtro in base al valore dei parametri passati
+            </summary>
+            <param name="aggiuntivi">Elenco dei campi aggiuntivi da trattare</param>
+            <param name="sCampo">Nome del campo aggiuntivo da cercare</param>
+            <param name="valore">Valore da impostare nella proprietà valore dell'aggiuntivo trovato</param>
+            <param name="valore2">Valore da impostare nella proprietà valore2 dell'aggiuntivo trovato</param>
+            <param name="multiple">Valore da impostare nella proprietà multiple dell'aggiuntivo trovato</param>
+            <param name="Operatore">Operatore da impostare nella proprietà operatore dell'aggiuntivo trovato</param>
+            <param name="throwNewExceptionIfNotFound">Indica se la funzione dovrà alzare una eccezione nel caso in cui non trovasse il campo agiuntivo o meno</param>
+            <returns>true se il campo è stato trovato ed valorizzato, false (solo nel caso in cui throwNewExceptionIfNotFound = false) se non è stato troato il campo aggiuntivo</returns>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.WcfConnector.Utility.Formule">
+            <summary>
+            Classe atta al calcolo delle formule
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WcfConnector.Utility.Formule.Calculate(System.String,System.Collections.Generic.List{Abletech.Arxivar.Entities.Arx_KeyValue})">
+            <summary>
+            Effettua il calcolo di una formula, utilizzando come parametro il vettore di chiavi valori del vettore keysValues
+            </summary>
+            <param name="formula">formula da calcolare</param>
+            <param name="keysValues">Vettore di variabili</param>
+            <returns>risultato della formula</returns>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.WcfConnector.Utility.Convert">
+            <summary>
+            Classe atta alla conversione tra tipologia di dati
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WcfConnector.Utility.Convert.From_Dm_TipiDocumento_To_List(Abletech.Arxivar.Entities.Dm_TipiDocumento)">
+            <summary>
+            Dato l'istanza di una classe dmtipiDocumento torna il vettore di int (documenttype, tipo2 e tipo3) della classe documentale
+            </summary>
+            <param name="dmTipiDocumento">Istanza della classe dmTipiDocumento</param>
+            <returns>Vettore codice classe [0] = DocumentType, [1] = Tipo2, [2] = Tipo3</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WcfConnector.Utility.Dm_TipiDocumento.GetLeaves(Abletech.Arxivar.Entities.Dm_TipiDocumento[])">
+            <summary>
+            Data una entity collection di Dm_TipiDocumento estrae solo i nodi che sono foglie
+            Questa funzione potrebbe risultare comoda in fase di archiviazione di un documento
+            in quanto l'archiviazione di un documento in ARXivar è consentita solo per quelle 
+            tipologie documentali che sono foglie dell'albero delle tipologie documentali
+            </summary>
+            <param name="dmTipiDocumentos">Elenco di Dm_TipiDocumento che rappresenta una porzione dell'albero (o l'albero completo) delle tipologie documentali (root compresa)</param>
+            <returns>L'elenco delle foglie</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WcfConnector.Utility.HashTableNet.LoadLinguaXml(System.String)">
+            <summary>
+            Dato il path completo del file XML lo. in caso di eccezione torna false.
+            </summary>
+            <param name="filePathXml"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WcfConnector.Utility.HashTableNet.Exist(System.String)">
+            <summary>
+            Verifica se esite o meno una chiave
+            </summary>
+            <param name="key">Per chiave si intende la coppia SEZIONE+CHIAVE senza separatore</param>
+            <returns></returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WcfConnector.Utility.HashTableNet.GetValue(System.String)">
+            <summary>
+            Se esiste una chiave ne torna un valore, se non esite torna String.Empty
+            </summary>
+            <param name="key">Per chiave si intende la coppia SEZIONE+CHIAVE senza separatore</param>
+            <returns></returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WcfConnector.Utility.ServiceCaller.GetServizioDati(System.String,System.String,System.String)">
+            <summary>
+            Crea una istanza del client di servizio Dati    
+            </summary>
+            <param name="username">Username da utilizzare per la connessione ad Arxivar</param>
+            <param name="password">Password da utilizzare per la connessione ad Arxivar</param>
+            <param name="url">Url del servizio Dati di Arxivar</param>
+            <returns>Istanza di comunicazione del servizio</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.Inspectors.ArxFileClientParameterInspector.CustomChunkManager.WriteChunkToDisk(System.Guid,System.Int32,System.Byte[],System.Int32,System.String)">
+            <summary>
+            Per ottimizzare 
+            </summary>
+            <param name="fileId"></param>
+            <param name="chunkIndex"></param>
+            <param name="buffer"></param>
+            <param name="chunkCount"></param>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.Title">
+            <summary>
+            Arxivar plug-in manager
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.Test" -->
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_Title">
+            <summary>
+             "ArxivarPM.CLW","NET0000001"
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_CommandCustom">
+            <summary>
+             Comando tipicizzato da inviare al servizio
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_DllName">
+            <summary>
+            Nome dll plugin
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_Select">
+            <summary>
+            Translation of : Select
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_InsertUpdateDelete">
+            <summary>
+            Translation of : Insert Update Delete
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_Other">
+            <summary>
+            Translation of : Altro
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_ConnectionString">
+            <summary>
+            Translation of : Stringa di Connessione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_Connections">
+            <summary>
+            Translation of : Connessioni
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_Password">
+            <summary>
+            Translation of : Password
+            </summary> 
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_QueryExecute">
+            <summary>
+            Translation of : Query di Esecuzione
+            </summary> 
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_Caption_Test">
+            <summary>
+            Translation of : Test connessione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_Test_Ok">
+            <summary>
+            Translation of : Connessione avvenuta con successo!
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_ConnectionNull">
+            <summary>
+             Translation of : Connessione non settata
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_ConnectionClose">
+            <summary>
+            Translation of : Connessione chiusa
+            </summary> 
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_StringQueryNull">
+            <summary>
+            Translation of : Stringa query non settata
+            </summary> 
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_Caption_TestQuery">
+            <summary>
+            Translation of : Test stringa query
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_TestQuery_Ok">
+            <summary>
+             Translation of : La stringa query è stata eseguita con successo!
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_DescriptionNull">
+            <summary>
+            Translation of : Descrizione non settata
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_QueryTypeNull">
+            <summary>
+            Translation of : Tipologia query non settata
+            </summary> 
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_QueryOverwrite">
+            <summary>
+            Translation of : Si vuole sovvrasscrivere la stringa di connessione con quella selezionata?
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_DllNameNull">
+            <summary>
+             Translation of : Nome dll del plugin non settato
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_CustomCommandNull">
+            <summary>
+            Translation of : Testo del custom command non settato
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_PluginNotFound">
+            <summary>
+             Translation of : Plugin {0} non trovato.
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_PluginFoundMore">
+            <summary>
+             Translation of : Presenza di più plugin rubrica attivi
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_TestCustomCommand">
+            <summary>
+             Translation of : Test Custom Command
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_OperationNull">
+            <summary>
+             Translation of : Operazione nulla
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_OperationResultTypeRow">
+            <summary>
+             Translation of : Righe
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_OperationResultTypeColumn">
+            <summary>
+             Translation of : Colonna
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_OperationResultTypeCC">
+            <summary>
+             Translation of : Custom Command
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_OperationExist">
+            <summary>
+             Translation of : L'operazione con descrizione {0} è già presente.
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_END">
+            <summary>
+             Translation of : END
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_ConditionDelete">
+            <summary>
+             Translation of : Siete sicuri di voler cancellare la condizione selezionata?
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_Conditions">
+            <summary>
+            Translation of : Condizioni
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_OperationResultTypeNull">
+            <summary>
+            Translation of : Tipologia risultato non impostata
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumArxivarPM.CLW_Goto">
+            <summary>
+            Translation of : Goto previsti
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.CheckNumbers">
+            <summary>
+            Controllo di numerazione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.SplitField">
+            <summary>
+            Campi di rottura
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.StartNewSchedule">
+            <summary>
+            Avvio nuova procedure di conservazione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.CheckNumbersSuccesfullyExecuted">
+            <summary>
+            Controlli di numerazione eseguiti con successo
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.CheckNumbersExecutedWithErrors">
+            <summary>
+            Controlli di numerazione eseguiti con esito negativo
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.CheckRequiredFieldsSuccesfullyExecuted">
+             <summary>
+            Inserita stringa Controlli sui campi obbligatori eseguiti con esito negativo.
+             </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.CheckRequiredFieldsExecutedWithErrors">
+            <summary>
+            Controlli sui campi obbligatori eseguiti con esito negativo
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.RequiredFields">
+            <summary>
+            Campi obbligatori
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.DocumentsNotMatchingRequiredFields">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.CheckNumberProcedureSuccessfullyExecuted">
+            <summary>
+            CONTROLLO TERMINATO CON ESITO POSITIVO.
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.CheckNumberProcedureExecutedWithErrors">
+            <summary>
+            CONTROLLO TERMINATO CON ERRORI.
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.DuplicatedDocument">
+            <summary>
+            Documenti duplicati
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.MissingDocument">
+            <summary>
+            Documenti mancanti.
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.FirstDocumentIsIncorrect">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.FirstDocumentFound">
+            <summary>
+            Primo documento rilevato
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.LastDocumentFound">
+            <summary>
+            Ultimo documento rilevato
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.StardingDocumentNumber">
+            <summary>
+            Numero di partenza
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.ProcessedDocument">
+            <summary>
+            Documenti elaborati
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.DematerializationParameters">
+            <summary>
+            Parametri di conservazione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.UserMustSetStartingNumber">
+            <summary>
+            L'operatore deve indicare il numero di partenza
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.OperatorDescription">
+            <summary>
+            Descrizione operatore
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.MaximumSize">
+            <summary>
+            Dimensione massima
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.VolumeType">
+            <summary>
+            Tipo
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.ErrorMessageFieldRequired">
+            <summary>
+            Non è stato valorizzato il campo '{0}'
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.ErrorMessageSignCertRequired">
+            <summary>
+            E' necessario valorizzare il certificato della firma
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.ErrorMessageTsaRequired">
+            <summary>
+            Non è stato selezionato l'account di marcaruta. Continuare?
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.ErrorMessageSignCertRequiredOutSourcing">
+            <summary>
+            Se il tipo di conservazione è OutSourcing potrebbe essere necessario valorizzare il certificato della firma. Continuare?
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.ErrorMessageCheckPinFailed">
+            <summary>
+            Verifica del pin fallita.
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.ErrorMessageCheckPinSuccess">
+            <summary>
+            Verifica del pin avvenuta correttamente.
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.StartNewScheduleOutsourcing">
+            <summary>
+            Avvio nuova procedura di outsourcing
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.DematerializationParametersOutsourcing">
+            <summary>
+            Parametri di outsourcing
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.ErrorMessageIllegalVolume">
+            <summary>
+            ATTENZIONE: scegliendo di continuare con l'operazione si è consapevoli del fatto che il volume generato NON sarà valido in termini legali. Si desidera continuare ugualmente?
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.StrongVerify">
+            <summary>
+            Abilita la verifica STRONG dei files firmati
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.MoreThen100Documents">
+            <summary>
+            ... altri documenti che presentano campi obbligatori non valorizzati, controllo interrotto dopo 100 documenti!
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.DocumentsNotMatchingForBarcode">
+            <summary>
+            Controlli sulla presenza barcode eseguiti con esito negativo
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.DocumentsNotMatchingForBarcodeList">
+            <summary>
+            Elenco documenti con presenza di barcode
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.MoreThen100DocumentsNotMatchingForBarcode">
+            <summary>
+            ... altri documenti che presentano etichette barcode, controllo interrotto dopo 100 documenti!
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.StateSelectedOnDocumentType">
+            <summary>
+            Stato impostato sulla classe documentale
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.State_DoNotChange">
+            <summary>
+             Non cambiare lo stato
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.State_ChangeIn">
+            <summary>
+            Cambia lo stato in :
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.State_ChangeInSelectionOnDocumentType">
+            <summary>
+            Cambia lo stato in base all'impostazione della classe documentale
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.State_NotSelected">
+            <summary>
+            Selezionare lo stato
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionDematerialization.Informazioni">
+            <summary>
+            Informazioni
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.ImportExportSettings">
+            <summary>
+            Import ed Export di impostazioni
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.ExportSettingsFromArxivar">
+            <summary>
+            Esporta impostazioni da ARXivar
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.ExportSettingsFromArxivarDescription">
+            <summary>
+            Permette di esportare le impostazioni da ARXivar verso un file XML
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.ImportSettingsToArxivar">
+            <summary>
+            Importa impostazioni in ARXivar
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.ImportSettingsToArxivarDescription">
+            <summary>
+            Permette di importare le impostazioni da un file XML verso ARXivar
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.ExecutionExportation">
+            <summary>
+            Esecuzione esportazione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.ExecuteExportation">
+            <summary>
+            Esegui esportazione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.ExecuteExportationDescription">
+            <summary>
+            Premere 'Esegui esportazione' per eseguire la procedura di esportazione impostazioni da ARXivar
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.WcfId">
+            <summary>
+            ID Univoco
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.WcfIpAddress">
+            <summary>
+            Indirizzi IP
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.WcfLastStart">
+            <summary>
+            Ultimo avvio
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.StatiPerClasse">
+            <summary>
+            Elenco stati della classe documentale selezionata
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.CampiPerClasse">
+            <summary>
+            Elenco campi specifici della classe documentale selezionata
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.WcfInfo">
+            <summary>
+            Informazioni servizio WCF
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.MappedField">
+            <summary>
+            Campo corrispondente
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.MappedState">
+            <summary>
+            Stato corrispondente
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.Mapping">
+            <summary>
+            Mappatura
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.MappingWithClasse">
+            <summary>
+            Associazione con classe documentale
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.ClasseCorrispondente">
+            <summary>
+            Classe corrispondente
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.EsecuzioneImportazione">
+            <summary>
+            Esecuzione Importazione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.EsecuzioneImportazioneDescription">
+            <summary>
+            Premere 'Esegui importazione' per eseguire la procedura di importazione impostazioni da ARXivar
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.ElencoAzioniDaEseguire">
+            <summary>
+            Elenco azioni da eseguire
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.RicalcolaOperazioni">
+            <summary>
+            Ricalcola operazioni
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.EseguiOperazioni">
+            <summary>
+            Esegui operazioni
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.CaricaAssociazioni">
+            <summary>
+            Carica associazioni
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.SalvaAassociazioni">
+            <summary>
+            Salva associazioni
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.ErrorOpeningFile">
+            <summary>
+            Errore durante il caricamento del file
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.LicenseInvalid">
+            <summary>
+             Licenza non corretta. Ripetere la procedura di attivazione licenza.
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.UserIsNotAdmin">
+            <summary>
+            Il pannello di import\export impostazioni è utilizzabile solo da utenti amministratori di ARXivar.
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionImportExport.WcfVerisionError">
+            <summary>
+            Non è possibile utilizzare questo plugin con versioni di ARXivar server minori di '5.2.14.0'
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionQueue.Title">
+            <summary>
+            Configurazioni sms
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionReport.ManageReport">
+            <summary>
+            Gestione reports
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSearch.Minore">
+            <summary>
+            Minore
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSearch.Minore_Uguale">
+            <summary>
+            Minore_Uguale
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSearch.Uguale">
+            <summary>
+            Uguale
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSearch.Maggiore_Uguale">
+            <summary>
+            Maggiore_Uguale
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSearch.Maggiore">
+            <summary>
+            Maggiore
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSearch.Diverso">
+            <summary>
+            Diverso
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSearch.Compreso">
+            <summary>
+            Compreso
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSearch.Nullo">
+            <summary>
+            Nullo
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSearch.Non_Nullo">
+            <summary>
+            Non_Nullo
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSearch.Nullo_o_Zero">
+            <summary>
+            Nullo_o_Zero
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSearch.Non_Nullo_e_Non_Zero">
+            <summary>
+            Non_Nullo_e_Non_Zero
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSearch.Escluso">
+            <summary>
+            Escluso
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSearch.Like">
+            <summary>
+            Like
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSearch.Inizia">
+            <summary>
+            Inizia
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSearch.Contiene">
+            <summary>
+            Contiene
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSearch.Termina">
+            <summary>
+            Termina
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSearch.Vuoto">
+            <summary>
+            Vuoto
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSearch.Non_Vuoto">
+            <summary>
+            Non_Vuoto
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSearch.Nullo_o_Vuoto">
+            <summary>
+            Nullo_o_Vuoto
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSearch.Non_Nullo_e_Non_Vuoto">
+            <summary>
+            Non_Nullo_e_Non_Vuoto
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSign.SignAndTimeStamp">
+            <summary>
+            Firma e marcatura
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSign.SignAndTimeStampParameters">
+            <summary>
+            Parametri di firma e marcatura
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSign.SignCertificate">
+            <summary>
+            Certificato di firma
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSectionSign.TimeStampAccount">
+            <summary>
+            Account di marcatura
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneClassiDocumentali.ElencoClassiDocumenti">
+            <summary>
+            ELENCO CLASSI DOCUMENTI
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneClassiDocumentali.ClasseDocumenti">
+            <summary>
+            Classe documentale
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneClassiDocumentali.ClassiDocumenti">
+            <summary>
+            Classi documentali
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Ok">
+            <summary>
+            Ok
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Cancel">
+            <summary>
+            Annulla
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Description">
+            <summary>
+            Descrizione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Add">
+            <summary>
+            Aggiungi
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Remove">
+            <summary>
+            Rimuovi
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Edit">
+            <summary>
+            Modifica
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Generic">
+            <summary>
+            Generale
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Error">
+            <summary>
+            Si ?verificato un errore
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Apply">
+            <summary>
+            Applica
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Close">
+            <summary>
+            Chiudi
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.DeleteConfirmation">
+            <summary>
+            Sei sicuro di voler cancellare il record?
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.DeleteConfirmationWithFormat">
+            <summary>
+            Sei sicuro di voler cancellare {0} ?
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.DeleteConfirmationTitle">
+            <summary>
+            Cancella ?
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.TestConnection">
+            <summary>
+            Test Connection
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.TestConnectionSuccesfully">
+            <summary>
+            Test di connessione eseguito correttamente
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.TestConnectionFail">
+            <summary>
+            Test di connessione eseguito con errori: '{0}'
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.NameInvalid">
+            <summary>
+            E' necessario inserire un nome valido.
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Name">
+            <summary>
+            Nome
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.MoveUp">
+            <summary>
+            Sposta Su
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.MoveDown">
+            <summary>
+            Sposta gi?
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.ValueNotSpecified">
+            <summary>
+            Non ?stato specificato il valore
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.ValueAlreadyExist">
+            <summary>
+            Valore gi?presente, impossibile aggiungere!
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.IpAddress">
+            <summary>
+            Indirizzo Ip
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Filters">
+            <summary>
+            Filtri
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Mode">
+            <summary>
+            Modalit?
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.DescriptionRequired">
+            <summary>
+            Valorizzare il campo descrizione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.UserOrGroup">
+            <summary>
+            Utente o gruppo
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Back">
+            <summary>
+            Indietro
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Next">
+            <summary>
+            Avanti
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.End">
+            <summary>
+            Fine
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.CheckUp">
+            <summary>
+            Check-Up
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Print">
+            <summary>
+            Print
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Information">
+            <summary>
+            Informazioni
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Comments">
+            <summary>
+            Commenti
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.UserIsNotInRole">
+            <summary>
+            L'utente deve essere nel ruolo {0}
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Configuration">
+            <summary>
+            Configurazione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Folders">
+            <summary>
+            Fascicoli
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Binders">
+            <summary>
+            Pratiche
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.ArxLink">
+            <summary>
+            Condivisioni ArxLink
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Contacts">
+            <summary>
+            Contatti
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Documents">
+            <summary>
+            Documenti
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Rename">
+            <summary>
+            Rinomina
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Up">
+            <summary>
+            Su
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Down">
+            <summary>
+            Giu
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Destination">
+            <summary>
+            Destinazione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Source">
+            <summary>
+            Sorgente
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Code">
+            <summary>
+            Codice
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Selected">
+            <summary>
+            Selezione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Action">
+            <summary>
+            Azione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.State">
+            <summary>
+            Stato
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Version">
+            <summary>
+            Versione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.SelectFile">
+            <summary>
+            "Selezionare il file"
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.SettingsSavedCorrectly">
+            <summary>
+            Impostazioni salvate correttamente
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.ArchiveDefault">
+            <summary>
+            Default in archiviazione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Settings">
+            <summary>
+            Impostazioni
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Export">
+            <summary>
+            Esporta
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Restore">
+            <summary>
+            Ripristina
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.States">
+            <summary>
+            Stati
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.ManageStates">
+            <summary>
+            Gestione stati documenti
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.CreationDate">
+            <summary>
+            Data di creazione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.SelectAll">
+            <summary>
+            Seleziona tutto
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.DeselectAll">
+            <summary>
+            Deseleziona tutto
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.SelectFields">
+            <summary>
+            Selezione campi 
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneComune.Save">
+            <summary>
+            Salva
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.Title">
+            <summary>
+            Eventi contenitore
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.TitleWizardInsert">
+            <summary>
+            Nuovo evento contenitore
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.TitleWizardEdit">
+            <summary>
+            Modifica evento contenitore
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.DocumentClasses">
+            <summary>
+            Classi documentali
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.Users">
+            <summary>
+            Utenti
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.DocumentClassRootCode">
+            <summary>
+            TUTTO
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.DocumentClassRootDescription">
+            <summary>
+            Ogni classe documentale
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.DocumentClassesList">
+            <summary>
+            ELENCO CLASSI DOCUMENTI
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.ActionsNotSet">
+            <summary>
+            Selezionare almeno una tipologia di eventi.
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.DocumentClassNotSet">
+            <summary>
+            Selezionare la classe documentale.
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.UserNotSet">
+            <summary>
+            "Selezionare l'utente o il gruppo"
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.ContainerExist">
+            <summary>
+            Esiste già un evento con la classe documentale per l'utente indicato.
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.UserStep">
+            <summary>
+            Selezione utente o gruppo
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.DocumentClassStep">
+            <summary>
+            Selezione della classe documenale
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.ActionsStep">
+            <summary>
+            Selezione tipologie eventi.
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.ActionPermissionAdded">
+            <summary>
+            Permesso aggiuntivo
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.ActionPermissionEx">
+            <summary>
+            Permesso esclusivo
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.ActionRemoveOnDelete">
+            <summary>
+            Cancella permessi alla rimozione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.ActionNotifyOnAddDocument">
+            <summary>
+            Notifica inserimento documento
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.ActionNotifyOnRemoveDocument">
+            <summary>
+            Notifica eliminazione documento
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.ActionNotifyOnCreateSubfolder">
+            <summary>
+            Notifica creazione sottocartella
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.ActionNotifyOnRemoveSubfolder">
+            <summary>
+            Notifica eliminazione sottocartella
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.SpreadFolder">
+            <summary>
+            Definisci gli eventi anche sui fascicoli figli
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.PermissionsStep">
+            <summary>
+            Selezione tipologie permessi
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.PermissionEditDoc">
+            <summary>
+            Modifica documento
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.PermissionEditProfile">
+            <summary>
+            Modifica profilo
+            </summary>
+            
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.PermissionSign">
+            <summary>
+            Firma digitale
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.PermissionReview">
+            <summary>
+            Revisioni
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.PermissionDeleteDoc">
+            <summary>
+            Cancellazione documento
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.PermissionAos">
+            <summary>
+            Conservazione sostitutiva
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.PermissionNotSet">
+            <summary>
+            Nessun permesso
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.ActionNotifyOnInsertPermission">
+            <summary>
+            Notifica inserimento un permesso aggiuntivo
+            </summary>
+            
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.VisualizzaDoc">
+            <summary>
+            Visualizza Documento
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneContainerEvents.VisualizzaPreview">
+            <summary>
+            Visualizza anteprima
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneIndex.ServiceName">
+            <summary>
+            Servizio di indicizzazione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneIndex.Title">
+            <summary>
+            Configurazione del servizio di indicizzazione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneIndex.ImpostazioniGenerali">
+            <summary>
+            Impostazioni generali
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneIndex.DataUltimaLettura">
+            <summary>
+            Data ultima lettura
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneSms.Title">
+            <summary>
+            Configurazioni sms
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneSms.NewSmsAccount">
+            <summary>
+            Nuovo account SMS
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneSms.EditSmsAccount">
+            <summary>
+            Modifica account SMS
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneSms.ProviderSMS">
+            <summary>
+            ProviderSMS
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneSms.Settings">
+            <summary>
+            Parametri
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneThumbnail.ServiceName">
+            <summary>
+            Serivizio Thumbnail
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneThumbnail.Title">
+            <summary>
+            Translation of : Configurazione del serivizio Thumbnail
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneThumbnail.ImpostazioniGenerali">
+            <summary>
+            Translation of : Impostazioni generali
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneThumbnail.CopiaSuTutteLeAOO">
+            <summary>
+            Translation of : Copia su tutte le AOO
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneThumbnail.WarningThumbnail">
+            <summary>
+            Translation of : ATTENZIONE: l'attività di creazione anteprima richiede risorse aggiuntive di CPU e spazio disco nel percorso 
+                             di archiviazione definito per le aree organizzative, variabile in base al numero di documenti e alla configurazione. 
+                             Si invita a verificare tali requisiti.
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneThumbnail.CopiaAooOK">
+            <summary>
+            Translation of : Regole di configurazione copiate su tutte le classi documentali
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneThumbnail.AreaOrganizzativa">
+            <summary>
+            Translation of : Area organizzativa
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneThumbnail.RegoleDiElaborazione">
+            <summary>
+            Translation of : Regole di elaborazione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneThumbnail.EspandiTutto">
+            <summary>
+            Translation of : Espandi tutto
+            </summary>	
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneThumbnail.RiduciTutto">
+            <summary>
+            Translation of : Riduci tutto
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneThumbnail.Elimina">
+            <summary>
+            Translation of : Elimina
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneThumbnail.DataUltimaLettura">
+            <summary>
+            Translation of : Data ultima lettura
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneThumbnail.MinutiCicloServizio">
+            <summary>
+            Translation of : Minuti ciclo servizio
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneThumbnail.Generale">
+            <summary>
+            Translation of : Generale
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneThumbnail.ImportaImmagine">
+            <summary>
+            Translation of : Importa immagine	
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneThumbnail.Abilitata">
+            <summary>
+            Translation of : Abilitata
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneThumbnail.Formato">
+            <summary>
+            Translation of : Formato
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneThumbnail.Coordinate">
+            <summary>
+            Translation of : Coordinate
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneThumbnail.Overlay">
+            <summary>
+            Translation of : Overlay
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneThumbnail.MessageCopyAoo">
+            <summary>
+            Translation of : Confermi la compilazione automatica in tutte le AOO in base a quella impostata a video attualmente? 
+                             Eventuali valori assegnati precedentemente verranno cancellati!
+                             Proseguo?
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneThumbnail.MessageDelete">
+            <summary>
+            Translation of : Cancellare le impostazioni salvate per la classe documentale [{0}] {1} per l'area organizzativa {2}? 
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneAggiuntivi.Title">
+            <summary>
+            Campi aggiuntivi
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneAggiuntivi.GruppiTitle">
+            <summary>
+            Gruppi campi aggiuntivi
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneAggiuntivi.GruppiInsert">
+            <summary>
+             Inserimento nuovo gruppo
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneAggiuntivi.GruppiEdit">
+            <summary>
+            Gruppi campi aggiuntivi
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneAggiuntivi.TranslationTitle">
+            <summary>
+            Traduzione valori in lingua
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneAggiuntivi.Language">
+            <summary>
+            Lingua
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneAggiuntivi.Translation">
+            <summary>
+            Traduzione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneAggiuntivi.DocumentType">
+            <summary>
+            Classe documento:
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneAggiuntivi.ConfirmDelete_AdditionalIdOnOtherClass">
+            <summary>
+            Classe documento:
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneAggiuntivi.CopyField_SyncronizeDataSource">
+            <summary>
+            Mantenere sincronizzata la fonte dati associata al nuovo campo aggiuntivo?
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneAggiuntivi.ComboGruppiNull">
+            <summary>
+            Il campo aggiuntivo non ha associato una fonte dati
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneAggiuntivi.AdditionalField">
+            <summary>
+            Campo aggiuntivo:
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneAggiuntivi.Relations">
+            <summary>
+            Relazioni
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneAggiuntivi.Associations">
+            <summary>
+            Associazioni
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneAggiuntivi.Decimals">
+            <summary>
+            Decimali
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneAggiuntivi.Caracters">
+            <summary>
+            Caratteri
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneAggiuntivi.Position">
+            <summary>
+            Posizione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneAggiuntivi.Type">
+            <summary>
+            Tipo
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneAggiuntivi.AssociationsSaveError">
+            <summary>
+            E' possibile editare le associazioni solo dopo aver creato il campo in ARXivar
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneConnessioni.Title">
+            <summary>
+            Connessioni archivi
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneConnessioni.NameConnection">
+            <summary>
+            Nome connessione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneConnessioni.DeleteConnection">
+            <summary>
+            Cancellazione connessione
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneConnessioni.OdbcDrivers">
+            <summary>
+            ODBC Drivers
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneConnessioni.OleDbProvider">
+            <summary>
+            OleDb Provider
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneConnessioni.DsnConnection">
+            <summary>
+            Dsn Connection
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneConnessioni.ArchivioLocale">
+            <summary>
+            Archivio locale
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneConnessioni.ConnectionExamples">
+            <summary>
+            Esempi connessione:
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:Abletech.Arxivar.Client.Localization.EnumSezioneConnessioni.ChangePassword" -->
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneConnessioni.DsnLabel">
+            <summary>
+            Dsn:
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneConnessioni.UserAccess">
+            <summary>
+            Utente di accesso
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneConnessioni.PasswordAccess">
+            <summary>
+            Password di accesso
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneConnessioni.DsnHelp">
+            <summary>
+            Origine dati configurata sul server. Deve essere visibile ed utilizzabile dall'utente configurato per l'avvio del servizio ARXivar.
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneProfile.Aoo">
+            <summary>
+            Area organizzativa
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneProfile.DocumentType">
+            <summary>
+            Classe documentale
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneProfile.State">
+            <summary>
+            Stato
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.Localization.EnumSezioneProfile.Binder">
+            <summary>
+            Pratiche
+            </summary>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.Risorse.Costanti">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Costanti.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Costanti.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Costanti.SERVIZIO_CONFIGURATION">
+            <summary>
+              Looks up a localized string similar to Configuration.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Costanti.SERVIZIO_DATI">
+            <summary>
+              Looks up a localized string similar to Data.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Costanti.SERVIZIO_DOCUMENTI">
+            <summary>
+              Looks up a localized string similar to Documents.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Costanti.SERVIZIO_PUSH">
+            <summary>
+              Looks up a localized string similar to Push.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Costanti.SERVIZIO_SEARCH">
+            <summary>
+              Looks up a localized string similar to Search.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Costanti.SERVIZIO_SECURITY">
+            <summary>
+              Looks up a localized string similar to Security.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Costanti.SERVIZIO_SIGN">
+            <summary>
+              Looks up a localized string similar to Sign.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Costanti.SERVIZIO_UTILITY">
+            <summary>
+              Looks up a localized string similar to Utility.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Costanti.SERVIZIO_WORKFLOW">
+            <summary>
+              Looks up a localized string similar to WorkFlow.
+            </summary>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.Risorse.Errori">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Errori.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Errori.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Errori.AGGIUNTIVO_NOT_DATE">
+            <summary>
+              Looks up a localized string similar to The additional field {0} is not a datetime.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Errori.AGGIUNTIVO_NOT_DOUBLE">
+            <summary>
+              Looks up a localized string similar to The additional field {0} is not a double type.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Errori.AGGIUNTIVO_NOT_FOUND">
+            <summary>
+              Looks up a localized string similar to Unable to retrieve additional field with name {0}.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Errori.AGGIUNTIVO_NOT_INT">
+            <summary>
+              Looks up a localized string similar to The additional field {0} is not a integer.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Errori.AGGIUNTIVO_NOT_MULTIPLE">
+            <summary>
+              Looks up a localized string similar to The additional field {0} is not a multiple type.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Errori.AGGIUNTIVO_NOT_STRING">
+            <summary>
+              Looks up a localized string similar to The additional field {0} is not a string.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Errori.COM_Dm_Fascicoli_GetFullPath_WCFCONNECTORMANAGER_NULL">
+            <summary>
+              Looks up a localized string similar to The parameter wcfconnectorManager is not set.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Errori.COM_Dm_FileInFolder_BulkInsertCom_WCFCONNECTORMAN_NULL">
+            <summary>
+              Looks up a localized string similar to The parameter wcfconnectorManager is not set.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Errori.COM_Dm_MonitoredFoldersInsert_WCFCONNECTORMANAGER_NULL">
+            <summary>
+              Looks up a localized string similar to The parameter wcfconnectorManager is not set.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Errori.COM_Dm_TipiDocumento_GetDataByAooFromTo_WCFCONNECTORMANAGER_NULL">
+            <summary>
+              Looks up a localized string similar to The parameter wcfconnectorManager is not set.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Errori.DISCONNECTEDFROMWCF">
+            <summary>
+              Looks up a localized string similar to It is impossible to use now the service {0}. The software is not connected with the service {1} -&gt; {2}.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Errori.Dm_Barcode_Print_ErrorPrinting">
+            <summary>
+              Looks up a localized string similar to Communication error with printer &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Errori.Dm_Profile_Insert_Base_BaseFromCantbeNULL">
+            <summary>
+              Looks up a localized string similar to The property &quot;from&quot; cannot be null..
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Errori.Dm_Profile_Insert_Base_BaseProfileCantbeNULL">
+            <summary>
+              Looks up a localized string similar to The property BaseProfile cannot be NULL!.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Errori.E_DataTable_Nullo">
+            <summary>
+              Looks up a localized string similar to The type was not initialized. Launch the initialize method to load data.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Errori.E_Url_Utility_Empty">
+            <summary>
+              Looks up a localized string similar to Url of service Utility is empty. It is impossible to connect. Edit the property url_ARX_UTILITY or login..
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Errori.EMPTY_PARAMETER">
+            <summary>
+              Looks up a localized string similar to Parameter {0} null.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Errori.LogonBundleError">
+            <summary>
+              Looks up a localized string similar to Error during the connection request for the software &apos;{0}&apos;: {1}.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Errori.SERVICE_NOT_AVAIABLE">
+            <summary>
+              Looks up a localized string similar to Connection towards service is not available. Maximum limit of concurrently connected users..
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Errori.SOFTWARE_NAME_EMPTY">
+            <summary>
+              Looks up a localized string similar to Software name not set. It is impossible to connect to the service.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.Risorse.Errori.Url_Vuoto">
+            <summary>
+              Looks up a localized string similar to Url of the service is empty. It is impossible to create the correct binding..
+            </summary>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.WCFConnectorManager">
+            <summary>Classe che permette la gestione della connessione con i servizi WCF di Arxivar.</summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.LicenseInfo">
+            <summary>
+            Informazioni sulla licenza disponibili a logon effettuato
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.Version">
+            <summary>
+            Based on File version
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.WCFConnectorManager.TotNumConnessioniPush">
+            <summary>
+            Indica quante volte è stato effettuato il logon sul push. (vertrà utilizzato dal timer di opentimeout)
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.WCFConnectorManager._ARX_DATI">
+            <summary>
+            Variabile che conterrà una istanza del servizio Dati
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.WCFConnectorManager._ARX_DOCUMENTI">
+            <summary>
+            Variabile che conterrà una istanza del servizio Documenti
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.WCFConnectorManager._ARX_SECURITY">
+            <summary>
+            Variabile che conterrà una istanza del servizio Documenti
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.WCFConnectorManager._ARX_UTILITY">
+            <summary>
+            Variabile che conterrà una istanza del servizio ArxVb6
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.WCFConnectorManager._ARX_SEARCH">
+            <summary>
+            Variabile che conterrà una istanza del servizio Search
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.WCFConnectorManager._ARX_WORKFLOW">
+            <summary>
+            Variabile che conterrà una istanza del servizio WorkFlow
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.WCFConnectorManager._ARX_CONFIGURATION">
+            <summary>
+            Variabile che conterrà una istanza del servizio Configuration
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.WCFConnectorManager._ARX_SIGN">
+            <summary>
+            Variabile che conterrà una istanza del servizio Sign
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.WCFConnectorManager.chiusuraInCorso">
+            <summary>
+            Indica se è in atto un tentativo di chiusura del canale
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.DisposeScope(System.ServiceModel.OperationContextScope,System.Boolean)">
+            <summary>
+            Fa il dispose di uno scope
+            </summary>
+            <param name="scope">Scope</param>
+            <param name="ignoreExceptions">Se accadono eccezioni deve far finta di nulla</param>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.Get_ARX_S_Dati_Service(System.String,System.TimeSpan,System.TimeSpan,System.TimeSpan,System.TimeSpan,System.Boolean)">
+            <summary>
+            Preleva una istanza del servizio Dati
+            </summary>
+            <returns>Classe istanziata</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.Get_ARX_S_Configuration_Service(System.String,System.TimeSpan,System.TimeSpan,System.TimeSpan,System.TimeSpan,System.Boolean)">
+            <summary>
+            Preleva una istanza del servizio Configuration
+            </summary>
+            <returns>Classe istanziata</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.Get_ARX_S_Workflow_Service(System.String,System.TimeSpan,System.TimeSpan,System.TimeSpan,System.TimeSpan,System.Boolean)">
+            <summary>
+            Preleva una istanza del servizio Dati
+            </summary>
+            <returns>Classe istanziata</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.Get_ARX_S_Search_Service(System.String,System.TimeSpan,System.TimeSpan,System.TimeSpan,System.TimeSpan,System.Boolean)">
+            <summary>
+            Preleva una istanza del servizio Search
+            </summary>
+            <returns>Classe istanziata</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.Get_ARX_S_Documenti_Service(System.String,System.TimeSpan,System.TimeSpan,System.TimeSpan,System.TimeSpan,System.Boolean)">
+            <summary>
+            Preleva una istanza del servizio Documenti
+            </summary>
+            <returns>Classe istanziata</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.Get_ARX_S_Security_Service(System.String,System.TimeSpan,System.TimeSpan,System.TimeSpan,System.TimeSpan,System.Boolean)">
+            <summary>
+            Preleva una istanza del servizio Security
+            </summary>
+            <returns>Classe istanziata</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.Get_ARX_S_Sign_Service(System.String,System.TimeSpan,System.TimeSpan,System.TimeSpan,System.TimeSpan,System.Boolean)">
+            <summary>
+            Preleva una istanza del servizio Sign
+            </summary>
+            <returns>Classe istanziata</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.GetPushCustomBinding(System.TimeSpan,System.TimeSpan,System.TimeSpan,System.TimeSpan,Abletech.Arxivar.Entities.Arx_SlEndpointConfig)">
+            <summary>
+            Metodo che viene utilizzato per creare un binding di tipo custom. Per ora utilizzato solo per gli endpoint Silverlight
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.GetBinding(System.Boolean,System.String,System.ServiceModel.SecurityMode,System.TimeSpan,System.TimeSpan,System.TimeSpan,System.TimeSpan,System.Boolean)">
+            <summary>
+            Restituisce un bindig di collegamento
+            </summary>
+            <param name="Url">Url di connessione</param>
+            <returns>Binding corretto</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.GetEndPointSecure(System.String)">
+            <summary>
+            Ritorna l'istanza dell'endpoint di collegamento
+            </summary>
+            <param name="url">Indirizzo di collegamento</param>
+            <returns>EndPoint</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.Set_ClientCredential(System.ServiceModel.Description.ClientCredentials)">
+            <summary>
+            Prepara le credenziali di collegamento
+            </summary>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.OnReceiveGenericEvent">
+            <summary>
+            Evento che viene sollevato alla ricezione di un evento generico.
+            </summary>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.OnReceiveMessage">
+            <summary>
+            Evento che viene sollevato alla ricezione di un messaggio.
+            </summary>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.GetMessage">
+            <summary>
+            Evento che viene sollevato alla richiestra del messaggio ricevuto.
+            </summary>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.ChannelClosed">
+            <summary>Evento che viene sollevato dopo la chiusura del canale di comunicazione con i servizi.</summary>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.ChannelFaulted">
+            <summary>Evento che viene sollevato alla fallimento del canale di comunicazione con i servizi.</summary>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.ChannelOpened">
+            <summary>Evento che viene sollevato dopo l'apertura del canale di comunicazione con i servizi.</summary>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.ChannelOpening">
+            <summary>Evento che viene sollevato all'apertura del canale di comunicazione con i servici.</summary>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.ChannelInitializing">
+            <summary>
+            Evento che viene sollevato appena prima di inizializzare il canale di comunicazione con i servizi.
+            </summary>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.OnChangePasswordRequired">
+            <summary>Evento che viene sollevato alla richiesta di modifica password.</summary>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.OnLogonFailed">
+            <summary>Evento che viene sollevato al falimento del logon.</summary>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.OnBeforePrintBarcode">
+            <summary>Evento che viene sollevato prima della stampa del barcode.</summary>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.OnAfterPrintBarcode">
+            <summary>Evento che viene sollevato dopo la stampa del barcode.</summary>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.OnFailPrintBarcode">
+            <summary>Evento che viene sollevato al fallimento della stampa barcode.</summary>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.OnPrintBarcode">
+            <summary>Evento che viene sollevato per la stampa barcode.</summary>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.OnReceiveTypedMessage">
+            <summary>
+            Evento che viene sollevato alla ricezione di un messaggio specializzato (Arx_MessageBase).
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.WCFConnectorManager.Arx_Dati_Timer">
+            <summary>
+            Questa proprietà serve per poter gestire correttamente la caduta del canale nel caso in cui mi trovo sulla 4502, perchè il client non riceve gli eventi di shotDown della sessione (autodisconnect lato server)).
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.ARX_DATI">
+            <summary>Oggetto di gestione del servizio DATI, che identifica i metodi riguardanti la gestione dei dati in Arxivar.</summary>
+            <value>Interfaccia che espone i metodi per la gestione dei dati di arxivar.</value>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.ARX_SIGN">
+            <summary>Oggetto di gestione del servizio SIGN, che identifica i metodi riguardanti la gestione della firma digitale in Arxivar.</summary>
+            <value>Interfaccia che espone i metodi per la gestione della firma digitale di arxivar.</value>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Abletech.Arxivar.Client.WCFConnectorManager.ARX_SECURITY_INTERNAL" -->
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.ARX_SECURITY">
+            <summary>
+            Oggetto di gestione del servizio SECURITY che identifica i metodi sulla sicurezza dell'informazione in Arxivar.
+            </summary>
+            <value>Oggetto interfaccia che espone i metodi di sicurezza dei dati.</value>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.ARX_UTILITY">
+            <summary>Oggetto di gestione del servizio UTILITY, che identifica i metodi di comune utilità in Arxivar.</summary>
+            <value>Interfaccia che espone i metodi di comune utilità.</value>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.ARX_SEARCH">
+            <summary>Oggetto di gestione del servizio SEARCH che identifica i metodi per ricercare l'informazioni in Arxivar.</summary>
+            <value>Interfaccia che espone i metodi di ricerca.</value>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.ARX_WORKFLOW">
+            <summary>Oggetto di gestione del Servizio WORKFLOW  che identifica i metodi per la gestione di Workflow in Arxivar.</summary>
+            <value>Oggetto interfaccia che espone i metodi per la gestione workflow</value>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.ARX_WORKFLOW_INTERNAL">
+            <summary>Oggetto di gestione del Servizio WORKFLOW  che identifica i metodi per la gestione di Workflow in Arxivar.</summary>
+            <value>Oggetto interfaccia che espone i metodi per la gestione workflow</value>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.ARX_CONFIGURATION">
+            <summary>Oggetto di gestione del servizio CONFIGURATION, che identifica i metodi riguardanti la configurazione amministrativa di Arxivar.</summary>
+            <value>Interfaccia che espone i metodi di configurazione amministrativa.</value>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.ARX_CONFIGURATION_INTERNAL">
+            <summary>Oggetto di gestione del servizio CONFIGURATION che identifica i metodi, esposti dal WCF, riguardanti la configurazione amministrativa
+            di Arxivar.</summary>
+            <value>Interfaccia che espone i metodi di configurazione amministrativa.</value>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.WCFConnectorManager.Arx_Sign_Timer">
+            <summary>
+            Questa proprietà serve per poter gestire correttamente la caduta del canale nel caso in cui mi trovo sulla 4502, perchè il client non riceve gli eventi di shotDown della sessione (autodisconnect lato server))
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.WCFConnectorManager.Arx_Documenti_Timer">
+            <summary>
+            Questa proprietà serve per poter gestire correttamente la caduta del canale nel caso in cui mi trovo sulla 4502, perchè il client non riceve gli eventi di shotDown della sessione (autodisconnect lato server))
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.WCFConnectorManager.Arx_Security_Timer">
+            <summary>
+            Questa proprietà serve per poter gestire correttamente la caduta del canale nel caso in cui mi trovo sulla 4502, perchè il client non riceve gli eventi di shotDown della sessione (autodisconnect lato server))
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.WCFConnectorManager.Arx_Search_Timer">
+            <summary>
+            Questa proprietà serve per poter gestire correttamente la caduta del canale nel caso in cui mi trovo sulla 4502, perchè il client non riceve gli eventi di shotDown della sessione (autodisconnect lato server))
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.WCFConnectorManager.Arx_Workflow_Timer">
+            <summary>
+            Questa proprietà serve per poter gestire correttamente la caduta del canale nel caso in cui mi trovo sulla 4502, perchè il client non riceve gli eventi di shotDown della sessione (autodisconnect lato server))
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.WCFConnectorManager.Arx_Configuration_Timer">
+            <summary>
+            Questa proprietà serve per poter gestire correttamente la caduta del canale nel caso in cui mi trovo sulla 4502, perchè il client non riceve gli eventi di shotDown della sessione (autodisconnect lato server))
+            </summary>
+        </member>
+        <member name="F:Abletech.Arxivar.Client.WCFConnectorManager.Arx_Utility_Timer">
+            <summary>
+            Questa proprietà serve per poter gestire correttamente la caduta del canale nel caso in cui mi trovo sulla 4502, perchè il client non riceve gli eventi di shotDown della sessione (autodisconnect lato server))
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.#ctor(System.String,Abletech.Arxivar.Entities.ArxLogonRequest)">
+            <summary>
+            Prepara un'istanza pronta per il logon con credenziali
+            </summary>
+            <param name="url"></param>
+            <param name="logonRequest"></param>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.#ctor(System.String,Abletech.Arxivar.Entities.ArxAccessTokenLogonRequest)">
+            <summary>
+            Prepara un'istanza per il logon mediante access token
+            </summary>
+            <param name="url"></param>
+            <param name="logonRequest"></param>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.#ctor(System.String,Abletech.Arxivar.Entities.ArxWindowsLogonRequest)">
+            <summary>
+            Prepara un'istanza per il logon di windows
+            </summary>
+            <param name="url"></param>
+            <param name="logonRequest"></param>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.PushEventsDispatcherDueTime">
+            <summary>
+            Imposta il tempo di intervallo entro quando il WcfConnector distribuisce gli eventi di push legati al mondo Workflow
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.WaitForReconnect">
+            <summary>Si definisce se il WCFConnector manager sia in attesa di riconnessione ai servizi WCF.</summary>
+            <value>Booleano che identifica se il WCFConnector manager sia in attesa di riconessione ai servizi.</value>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.ChangePasswordRequired">
+            <summary>Definizione della possibilità di richiedere il cambiamento della password per l'utente connesso.</summary>
+            <value>Booleano che identifica se è richiesto il cambiamento della password.</value>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.SessionId">
+            <summary>Indica il codice di sessione dell'applicativo che ha eseguito il logon ai servizi.</summary>
+            <value>Stringa che indica l'identificativo di sessione per la connessione ai servizi. 
+            Questa proprietà è valorizzata solo dopo aver effettuato il logon.</value>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.GetUsedLicense">
+            <summary>Estrazione della lista delle tipologie di licenze.</summary>
+            <returns>Array di oggetti che identifica i moduli di licenza attivati lato server.</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.StartTentativoConnessionePush">
+            <summary>
+            Avvia il timer che permette di verificare se il canale di push non è raggiungibile
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.url_ARX_UTILITY">
+            <summary>Percorso Url per il canale di comunicazione con il servizio Utility.</summary>
+            <value>Stringa che identifica il percorso Url per la connessione con il servizio Utility.</value>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.url_ARX_VB6">
+            <summary>Percorso Url per il canale di comunicazione con il servizio Vb6.
+            <value>Stringa che identifica il percorso Url per la connessione con il servizio Vb6.</value>
+            </summary>       
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.Url">
+            <summary>Percorso Url per il canale di comunicazione con i servizi.</summary>
+            <value>Stringa che identifica il percorso Url per la connessione.</value>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.MachineName">
+            <summary>
+            Identifica il nomeMacchina che si sta collegando ad ARXivar
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.IpAddress">
+            <summary>
+            Identifica l'ip che si sta collegando ad ARXivar
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.Dispose">
+            <summary>Metodo che permette la cancellazione dell'istanza del WcfConnectorManager in memoria.</summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.ArrestaConnessione">
+            <summary>
+            Funzione che termina la connessione dopo un certo timeout
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.AutoReconnect">
+            <summary>Definizione della possibilità di un ricollegamento sul canale di push, nel caso in cui la connessione non sia più attiva</summary>
+            <value>Booleano che identifica la possibilità di ricollegarsi al canale di push nel caso di connessione non attiva</value>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.ConnectionState">
+            <summary>Estrazione dello stato di connessione ai servizi.</summary>
+            <value>Enumerativo che identifica lo stato di connessione ai servizi.</value>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.OnReconnect">
+            <summary>Evento che viene sollevato nel caso il serivizio abbia eseguito una riconnessione.</summary>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.OnLogonSuccesfully">
+            <summary>Evento che viene sollevato nel caso di logon avvenuto con successo.</summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.ClientId">
+            <summary>Nome dell'applicativo software che effettua la conessione ai servizi.</summary>
+            <value>Stringa che identifica il nome dell'applicativo che vuole comunicare con i WCF. 
+            Questa valore deve essere obbligatoriemente settato, altrimenti il logon alzerà un'eccezione.</value>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.LastException">
+            <summary>Ultima eccezione alzata dai servizi.</summary>
+            <value>Oggetto che identifica l'ultima eccezione ricevuta dai servizi.</value>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.Lang">
+            <summary>Lingua di comunicazione con i servizi.</summary>
+            <value>Stringa che identifica la lingua di comunicazione con i servizi WCF.</value>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.AutoChunk">
+            <summary>
+            Abilitazione automatica dell'uso dei chunk.
+            </summary>
+            <value>Booleano che indica con "tru" se i chunk dei files verranno gestiti automaticamente. 
+            Questa proprietà di default è impostata a true.</value>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.GetArxivarServerListInPolicy">
+            <summary>
+            Metodo che permette di estrarre la lista dei server ARXivar disponibili, impostati nella policy di dominio.</summary>
+            <returns>Array di oggetti che contengono l'informazione dei server arxivar disponibili.</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.GetAccessToken(Abletech.Arxivar.Entities.ArxAccessTokenRequest)">
+            <summary>
+            Ottiene un access token per potersi connettere
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.Impersonate_By_UserId(System.Int32)">
+            <summary>
+            Metodo che permette di impersonificare un utente tramite il suo identificativo utente
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.Impersonate_By_UserName(System.String)">
+            <summary>
+            Metodo che permette di impersonificare un utente tramite il suo username
+            </summary>
+            <param name="username"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.Impersonate_By_WindowsUsername(System.String)">
+            <summary>
+            Metodo che permette di impersonificare un utente tramite il suo "username" di windows.
+            </summary>
+            <param name="windowsUsername"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.Impersonate_By_ExternalId(System.String)">
+            <summary>
+            Metodo che permette di impersonificare un utente tramite ExternalId
+            </summary>
+            <param name="externalId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.DeImpersonate">
+            <summary>
+            Deactivate impersonate: performs logoff and logon with the original user
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.UserConnected">
+            <summary>Utente connesso ai servizi.</summary>
+            <value>Oggetto utente che contiene le informazione dell'utente connesso ai servizi.</value>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.UserGrantor">
+            <summary>Estrazione dell'utente utilizzato tramite impersonificazione.</summary>
+            <value>Oggetto che contiene l'informazione dell'utente impersonificato.</value>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.OnRequestCertInfoByCertId">
+            <summary>
+            Evento generato lato server quando il servizio richiede informazioni dettagliate di un certificato.
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.Abletech#Arxivar#Client#ARX_S_Push#ServizioPushCallback#SignRequestLogin(System.String,System.String,System.String)">
+            <summary>
+            Metodo che permette di eseguire il login tramite un certificato.
+            </summary>
+            <param name="certId">Stringa che identifica univocamente il certificato.</param>
+            <param name="certName">Stringa che indica il nome del certificato.</param>
+            <param name="pin">Stringa che identifica il codice di sicurezza (pin) del certificato.</param>
+            <returns>Oggetto che contiene l'eventuale eccezione di verifica.</returns>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.OnSignRequest">
+            <summary>
+            Evento generato alla richiesta di una firma digitale.
+            </summary>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.OnSignRequestCancel">
+            <summary>
+            Evento generato per la richiesta di annullamento di una richiesta di firma
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.Abletech#Arxivar#Client#ARX_S_Push#ServizioPushCallback#SignRequestCancel(System.String)">
+            <summary>
+            Scateno gli handlers in ascolto sull'evento SignRequestCancel
+            </summary>
+            <param name="response"></param>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.OnSignRequestLogin">
+            <summary>
+            Evento sollevato al login per la firma digitale.
+            </summary>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.OnSignRequireClientOperation">
+            <summary>
+            Evento sollevato nel caso siano richieste operazioni dal client di Arxivar, per la firma digitale.
+            </summary>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.OnSignCompleted">
+            <summary>
+            Evento scatenato alla conclusione del processo di firma digitale.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.ARX_DOCUMENTI">
+            <summary>Oggetto di gestione del servizio DOCUMENTI, che identifica i metodi riguardanti la gestione dei file in Arxivar.</summary>
+            <value>Interfaccia che espone i metodi per la gestione dei file di arxivar.</value>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.PluginsLoaded">
+            <summary>
+            Elenco dei plugin caricati dal server. 
+            </summary>
+            <value>Array di oggetti che contiene l'informazione del plugin server caricato.</value>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.OnDownloadDataSourcePercentageChange">
+            <summary>
+            Evento che viene sollevato al cambiamento della percentuale di avanzamento del download di un datasource.
+            </summary>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.OnDownloadFilePercentageChange">
+            <summary>
+            Evento che viene sollevato al cambiamento della percentuale di avanzamento del download di un file.
+            </summary>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.OnUploadFilePercentageChange">
+            <summary>
+            Evento che viene sollevato al cambiamento della percentuale di avanzamento dell'upload di un file.
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.RequestCertInfoByCertId(System.String,System.String)">
+            <summary>
+            Metodo che permette di estrarre le informazione sul certificato.
+            </summary>
+            <param name="CertId">Stringa che identifica univocamente il certifiato.</param>
+            <param name="CertName">Stringa che definisce il nome del certificato.</param>
+            <returns>Oggetto che contiene l'informazione del certificato.</returns>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.OnBeforeWcfCall">
+            <summary>
+            Evento che viene sollevato, prima dell'esecuzione di una chiamate al servizio WCF.
+            </summary>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.OnAfterWcfCall">
+            <summary>
+            Evento che viene sollevato, dopo l'esecuzione di una chiamate al servizio WCF.
+            </summary>
+        </member>
+        <member name="E:Abletech.Arxivar.Client.WCFConnectorManager.OnAfterWcfLegacyCall">
+            <summary>
+            Evento che viene sollevato, dopo l'esecuzione di una chiamate al servizio WCF in versione Legacy per essere gestito da VB6
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.IgnoreServerCacheSettings">
+            <summary>
+            Ignorare le impostazione della cache sul server.
+            </summary>
+            <value>Booleano che indica con "true" se è necessario ignorare l'impostazioni della cache sul server.</value>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.GetCacheClientData">
+            <summary>
+            Metodo che permette di estrarre le cache caricate.
+            </summary>
+            <returns>Lista di oggetti che contengono l'informazione delle cache caricate.</returns>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.CacheClientFlush">
+            <summary>
+            Metodo che permette di salvare le informazioni caricate nella cache. 
+            </summary>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.GetNewLangWcfManager">
+            <summary>
+            Metodo che permette di creare una nuova istanza per la gestione lingua.
+            </summary>
+            <returns>Istanza del gestore delle lingue.</returns>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.LangWcfManager">
+            <summary>
+            Oggetto per la gestione delle traduzioni.
+            </summary>
+            <value>Interfaccia che definisce l'oggetto che gestisce le lingue.</value>
+        </member>
+        <member name="M:Abletech.Arxivar.Client.WCFConnectorManager.LockAoo(System.String)">
+            <summary>
+            Metodo che permette di impostare l'area organizzativa di lavoro, 
+            nel caso in cui l'utente connesso lavori in regime di aoo bloccate.
+            </summary>
+            <param name="aoo">Codice dell'area organizzativa su cui si vuole lavorare</param>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.SoftwareCapabilitiesProvValue">
+            <summary>
+            Valore del relativo provider di software "capabilities" caricato sul server.
+            Valore disponibile solo dopo il logon.
+            </summary>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.ClientServiceAdress">
+            <summary>
+            Indirizzo dell'applicativo client che ha effettuato la connessione.Valore disponibile solo dopo il logon.
+            </summary>
+            <value>Oggetto che contiene l'informazione del client connesso.</value>
+        </member>
+        <member name="P:Abletech.Arxivar.Client.WCFConnectorManager.UrlRestService">
+            <summary>Percorso Url per il canale di comunicazione con il servizio REST.</summary>
+            <value>Stringa che identifica il percorso Url per la connessione al servizio REST.</value>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.RequestCertInfoByCertId">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.LogOnFailedDelegate">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.GetMessageDelegate">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.ChannelOpeningDelegate">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.ChannelOpenedDelegate">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.ChannelFaultedDelegate">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.ChannelClosedDelegate">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.ChannelInitializeDelegate">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.OnReceiveGenericEventDelegate">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.OnReceiveMessageDelegate">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.OnChangePasswordRequiredDelegate">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.OnReconnectDelegate">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.OnLogonSuccesfullyDelegate">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.OnBeforePrintBarcodeDelegate">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.OnPrintBarcodeDelegate">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.OnAfterPrintBarcodeDelegate">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.OnFailPrintBarcodeDelegate">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.SignRequest">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.SignRequestCancel">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.SignRequireClientOperation">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.SignCompleted">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.SignRequestLogin">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.OnReceiveTypedMessageDelegate">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.OnFilePercentageChangeDelegate">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.OnDataSourcePercentageChangeDelegate">
+            <buildflag>Exclude from Online</buildflag>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.OnBeforeWcfCallDelegate">
+            <summary>
+            Evento di before call WCF
+            </summary>
+            <param name="serviceType"></param>
+            <param name="methodInfo"></param>
+            <param name="arguments"></param>
+            <param name="dmCacheLevel"></param>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.OnAfterWcfCallDelegate">
+            <summary>
+            Evento di after call Wcf
+            </summary>
+            <param name="serviceType"></param>
+            <param name="methodInfo"></param>
+            <param name="wcfCalled">Boolean che indica se è stato contattato realmente il WCF o se è stata usata la cache client</param>
+            <param name="dmCacheLevel"></param>
+            <param name="dateTimeStart"></param>
+            <param name="dateTimeEnd"></param>
+            <param name="externalId">Codice eventualmente tornato dal befor event</param>
+        </member>
+        <member name="T:Abletech.Arxivar.Client.OnAfterWcfCallLegacyDelegate">
+            <summary>
+            Evento di after call Wcf (Legacy per l'utilizzo da VB6)
+            </summary>
+            <param name="serviceType"></param>
+            <param name="methodInfo"></param>
+            <param name="wcfCalled">Boolean che indica se è stato contattato realmente il WCF o se è stata usata la cache client</param>
+            <param name="dmCacheLevel"></param>
+            <param name="dateTimeStart"></param>
+            <param name="dateTimeEnd"></param>
+            <param name="externalId"></param>
+        </member>
+    </members>
+</doc>
