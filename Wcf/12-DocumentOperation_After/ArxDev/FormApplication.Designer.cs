@@ -38,6 +38,8 @@
             this.buttonAooForSearch = new System.Windows.Forms.Button();
             this.dgAoo = new System.Windows.Forms.DataGridView();
             this.tabPageClasses = new System.Windows.Forms.TabPage();
+            this.buttonInfoClasse = new System.Windows.Forms.Button();
+            this.textBoxCodiceClasse = new System.Windows.Forms.TextBox();
             this.buttonClassesForEditProfile = new System.Windows.Forms.Button();
             this.buttonClassesForSearch = new System.Windows.Forms.Button();
             this.buttonClassesForArchive = new System.Windows.Forms.Button();
@@ -60,8 +62,6 @@
             this.buttonEditFile = new System.Windows.Forms.Button();
             this.textBoxOpenDocument = new System.Windows.Forms.TextBox();
             this.buttonOpenDocument = new System.Windows.Forms.Button();
-            this.buttonInfoClasse = new System.Windows.Forms.Button();
-            this.textBoxCodiceClasse = new System.Windows.Forms.TextBox();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageAoo.SuspendLayout();
@@ -98,7 +98,7 @@
             // applicationStrip
             // 
             this.applicationStrip.Name = "applicationStrip";
-            this.applicationStrip.Size = new System.Drawing.Size(39, 17);
+            this.applicationStrip.Size = new System.Drawing.Size(38, 17);
             this.applicationStrip.Text = "Ready";
             // 
             // tabControl1
@@ -187,6 +187,23 @@
             this.tabPageClasses.TabIndex = 2;
             this.tabPageClasses.Text = "Classes";
             this.tabPageClasses.UseVisualStyleBackColor = true;
+            // 
+            // buttonInfoClasse
+            // 
+            this.buttonInfoClasse.Location = new System.Drawing.Point(6, 139);
+            this.buttonInfoClasse.Name = "buttonInfoClasse";
+            this.buttonInfoClasse.Size = new System.Drawing.Size(75, 23);
+            this.buttonInfoClasse.TabIndex = 8;
+            this.buttonInfoClasse.Text = "Class info";
+            this.buttonInfoClasse.UseVisualStyleBackColor = true;
+            this.buttonInfoClasse.Click += new System.EventHandler(this.buttonInfoClasse_Click);
+            // 
+            // textBoxCodiceClasse
+            // 
+            this.textBoxCodiceClasse.Location = new System.Drawing.Point(6, 113);
+            this.textBoxCodiceClasse.Name = "textBoxCodiceClasse";
+            this.textBoxCodiceClasse.Size = new System.Drawing.Size(170, 20);
+            this.textBoxCodiceClasse.TabIndex = 7;
             // 
             // buttonClassesForEditProfile
             // 
@@ -347,7 +364,7 @@
             this.textBoxDelete.Name = "textBoxDelete";
             this.textBoxDelete.Size = new System.Drawing.Size(176, 20);
             this.textBoxDelete.TabIndex = 13;
-            this.textBoxDelete.Text = "890";
+            this.textBoxDelete.Text = "16";
             // 
             // buttonDeleteDocument
             // 
@@ -365,7 +382,7 @@
             this.textBoxOverWrite.Name = "textBoxOverWrite";
             this.textBoxOverWrite.Size = new System.Drawing.Size(176, 20);
             this.textBoxOverWrite.TabIndex = 11;
-            this.textBoxOverWrite.Text = "890";
+            this.textBoxOverWrite.Text = "16";
             // 
             // buttonOverwriteFile
             // 
@@ -383,7 +400,7 @@
             this.textBoxEditDocument.Name = "textBoxEditDocument";
             this.textBoxEditDocument.Size = new System.Drawing.Size(176, 20);
             this.textBoxEditDocument.TabIndex = 9;
-            this.textBoxEditDocument.Text = "890";
+            this.textBoxEditDocument.Text = "16";
             // 
             // buttonEditFile
             // 
@@ -401,7 +418,7 @@
             this.textBoxOpenDocument.Name = "textBoxOpenDocument";
             this.textBoxOpenDocument.Size = new System.Drawing.Size(176, 20);
             this.textBoxOpenDocument.TabIndex = 7;
-            this.textBoxOpenDocument.Text = "890";
+            this.textBoxOpenDocument.Text = "16";
             // 
             // buttonOpenDocument
             // 
@@ -412,23 +429,6 @@
             this.buttonOpenDocument.Text = "Open";
             this.buttonOpenDocument.UseVisualStyleBackColor = true;
             this.buttonOpenDocument.Click += new System.EventHandler(this.buttonOpenDocument_Click);
-            // 
-            // buttonInfoClasse
-            // 
-            this.buttonInfoClasse.Location = new System.Drawing.Point(6, 139);
-            this.buttonInfoClasse.Name = "buttonInfoClasse";
-            this.buttonInfoClasse.Size = new System.Drawing.Size(75, 23);
-            this.buttonInfoClasse.TabIndex = 8;
-            this.buttonInfoClasse.Text = "Class info";
-            this.buttonInfoClasse.UseVisualStyleBackColor = true;
-            this.buttonInfoClasse.Click += new System.EventHandler(this.buttonInfoClasse_Click);
-            // 
-            // textBoxCodiceClasse
-            // 
-            this.textBoxCodiceClasse.Location = new System.Drawing.Point(6, 113);
-            this.textBoxCodiceClasse.Name = "textBoxCodiceClasse";
-            this.textBoxCodiceClasse.Size = new System.Drawing.Size(170, 20);
-            this.textBoxCodiceClasse.TabIndex = 7;
             // 
             // FormApplication
             // 

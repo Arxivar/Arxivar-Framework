@@ -69,10 +69,11 @@
             this.buttonCategories = new System.Windows.Forms.Button();
             this.dgContacts = new System.Windows.Forms.DataGridView();
             this.tabPageSearch = new System.Windows.Forms.TabPage();
+            this.buttonSearchFolder = new System.Windows.Forms.Button();
+            this.buttonSearchProfile2 = new System.Windows.Forms.Button();
             this.buttonSearchTask = new System.Windows.Forms.Button();
             this.buttonSearchProfile = new System.Windows.Forms.Button();
             this.dgSearch = new System.Windows.Forms.DataGridView();
-            this.buttonSearchProfile2 = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageAoo.SuspendLayout();
@@ -513,6 +514,7 @@
             // 
             // tabPageSearch
             // 
+            this.tabPageSearch.Controls.Add(this.buttonSearchFolder);
             this.tabPageSearch.Controls.Add(this.buttonSearchProfile2);
             this.tabPageSearch.Controls.Add(this.buttonSearchTask);
             this.tabPageSearch.Controls.Add(this.buttonSearchProfile);
@@ -525,9 +527,29 @@
             this.tabPageSearch.Text = "Search";
             this.tabPageSearch.UseVisualStyleBackColor = true;
             // 
+            // buttonSearchFolder
+            // 
+            this.buttonSearchFolder.Location = new System.Drawing.Point(7, 94);
+            this.buttonSearchFolder.Name = "buttonSearchFolder";
+            this.buttonSearchFolder.Size = new System.Drawing.Size(170, 23);
+            this.buttonSearchFolder.TabIndex = 11;
+            this.buttonSearchFolder.Text = "Search Folder";
+            this.buttonSearchFolder.UseVisualStyleBackColor = true;
+            this.buttonSearchFolder.Click += new System.EventHandler(this.buttonSearchFolder_Click);
+            // 
+            // buttonSearchProfile2
+            // 
+            this.buttonSearchProfile2.Location = new System.Drawing.Point(7, 36);
+            this.buttonSearchProfile2.Name = "buttonSearchProfile2";
+            this.buttonSearchProfile2.Size = new System.Drawing.Size(169, 23);
+            this.buttonSearchProfile2.TabIndex = 10;
+            this.buttonSearchProfile2.Text = "Search Profile (2)";
+            this.buttonSearchProfile2.UseVisualStyleBackColor = true;
+            this.buttonSearchProfile2.Click += new System.EventHandler(this.buttonSearchProfile2_Click);
+            // 
             // buttonSearchTask
             // 
-            this.buttonSearchTask.Location = new System.Drawing.Point(6, 81);
+            this.buttonSearchTask.Location = new System.Drawing.Point(6, 65);
             this.buttonSearchTask.Name = "buttonSearchTask";
             this.buttonSearchTask.Size = new System.Drawing.Size(170, 23);
             this.buttonSearchTask.TabIndex = 9;
@@ -555,16 +577,6 @@
             this.dgSearch.Name = "dgSearch";
             this.dgSearch.Size = new System.Drawing.Size(650, 383);
             this.dgSearch.TabIndex = 7;
-            // 
-            // buttonSearchProfile2
-            // 
-            this.buttonSearchProfile2.Location = new System.Drawing.Point(7, 36);
-            this.buttonSearchProfile2.Name = "buttonSearchProfile2";
-            this.buttonSearchProfile2.Size = new System.Drawing.Size(169, 23);
-            this.buttonSearchProfile2.TabIndex = 10;
-            this.buttonSearchProfile2.Text = "Search Profile (2)";
-            this.buttonSearchProfile2.UseVisualStyleBackColor = true;
-            this.buttonSearchProfile2.Click += new System.EventHandler(this.buttonSearchProfile2_Click);
             // 
             // FormApplication
             // 
@@ -648,5 +660,6 @@
         private System.Windows.Forms.Button buttonInfoClasse;
         private System.Windows.Forms.TextBox textBoxCodiceClasse;
         private System.Windows.Forms.Button buttonSearchProfile2;
+        private System.Windows.Forms.Button buttonSearchFolder;
     }
 }

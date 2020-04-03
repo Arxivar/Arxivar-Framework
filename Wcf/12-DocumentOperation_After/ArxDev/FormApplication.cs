@@ -509,7 +509,8 @@ namespace ArxDev
                     out age,
                     new Arx_File(filePath),
                     System.Convert.ToInt32(textBoxOverWrite.Text),
-                    string.Empty, Dm_Profile_Set_Document_State_Option.ForceOverWrite);
+                    string.Empty, 
+                    Dm_Profile_Set_Document_State_Option.ForceOverWrite);
 
                 if (esito)
                 {
@@ -540,7 +541,8 @@ namespace ArxDev
                 ArxGenericException canDelete = _manager.ARX_SECURITY.Dm_Profile_Can_Delete_Advanced(docDeleteId);
                 if (canDelete.Exception != Security_Exception.Nothing)
                 {
-                    throw new Exception(canDelete.ErrorMessage);
+                    MessageBox.Show(canDelete.ErrorMessage, "Delete document", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
                 }
 
                 _manager.ARX_DATI.Dm_Profile_Delete(docDeleteId);

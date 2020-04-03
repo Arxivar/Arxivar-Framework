@@ -241,15 +241,16 @@ namespace ArxDev
             try
             {
                 Dm_Profile_ForInsert insert = _manager.ARX_DATI.Dm_Profile_ForInsert_Get_New_Instance_ByDocumentTypeCodice("TEST.DEV");
-                insert.Aoo = "DEMO";
-                insert.DocName = "My C# Application";
-                insert.InOut = DmProfileInOut.Interno;
-                insert.Stato = "VALID";
-                insert.DataDoc = DateTime.Now.Date; // new DateTime(2018,04,30);
+                insert.Aoo = "DEMO"; // Area organizzativa
+                insert.DocName = "My C# Application"; // oggetto
+                insert.InOut = DmProfileInOut.Interno; // origine
+                insert.Stato = "VALID"; // Stato (usare codice non descrizione)
+                insert.DataDoc = DateTime.Now.Date;  // new DateTime(2018,04,30);
                 //insert.ProtocolloInterno = "AR\\0019";
-                //insert.AssocDoc.IDERP = "989";
 
 
+                insert.AssocDoc.IDERP = "my_ext_id_00001";
+                
                 // Mi - De - Cc
                 insert.From = GetDatiProfilo("ABLETECH", Dm_DatiProfilo_Campo.MI);
                 insert.To.Add(GetDatiProfilo("MAURO BIAGGIO", Dm_DatiProfilo_Campo.DE));
@@ -317,7 +318,8 @@ namespace ArxDev
 
                 //File del profilo
                 insert.File = new Arx_File(@"C:\Temp\test.txt");
-                var dmProfileResult = _manager.ARX_DATI.Dm_Profile_Insert(insert);
+                Dm_Profile_Result dmProfileResult = _manager.ARX_DATI.Dm_Profile_Insert(insert);
+
 
                 /* E se volessimo fare un'achiviazione per il ciclo passivo ?
                    è sufficiente eseguire 
@@ -412,14 +414,24 @@ namespace ArxDev
             try
             {
                 // Recupero il profilo da modificare
-                Dm_Profile_ForUpdate profile = _manager.ARX_DATI.Dm_Profile_ForUpdate_GetNewInstance(920);
+                Dm_Profile_ForUpdate profile = _manager.ARX_DATI.Dm_Profile_ForUpdate_GetNewInstance(15);
 
                 profile.DocName = "Subject edited from C# application";
 
                 //.... campi agg...
 
+                // Campo agente (Nell'esempio è un campo combo con LimitToList -> Il valore indicato DEVE esistere)
+                Aggiuntivo_String aggAgente = profile.Aggiuntivi.FirstOrDefault(
+                    x => string.Equals(x.ExternalId, "COD_AGENTE", StringComparison.CurrentCultureIgnoreCase)) as Aggiuntivo_String;
+                if (aggAgente == null)
+                {
+                    throw new Exception("External id 'COD_AGENTE' not found");
+                }
+                aggAgente.Valore = "AG_003";
 
-                var profileResult = _manager.ARX_DATI.Dm_Profile_Update(profile, string.Empty);
+
+                Dm_Profile_Result profileResult = _manager.ARX_DATI.Dm_Profile_Update(profile, string.Empty);
+
                 if (profileResult.EXCEPTION != Security_Exception.Nothing)
                 {
                     throw new Exception(string.Format("Error: {0}", profileResult.MESSAGE));

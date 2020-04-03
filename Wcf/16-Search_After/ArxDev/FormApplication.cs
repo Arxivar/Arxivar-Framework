@@ -341,6 +341,33 @@ namespace ArxDev
                 }
                 else
                 {
+                    // Recuperaro il fascicolo Dev1
+                    int idFolder = 0;
+
+                    using (var folderSelect = new Dm_Fascicoli_Select())
+                    using (var folderSearch = new Dm_Fascicoli_Search())
+                    {
+                        folderSelect.ID.Selected = true;
+
+                        folderSearch.NOME.SetFilter(Dm_Base_Search_Operatore_String.Uguale, "DEV2");
+                        folderSearch.NOME.forceCaseInsensitive = true;
+
+                        using (var dsFolder = _manager.ARX_SEARCH.Dm_Fascicoli_GetData(folderSearch, folderSelect))
+                        {
+                            var dtFolder = dsFolder.GetDataTable(0);
+                            if (dtFolder.Rows.Count ==0)
+                            {
+                                throw new Exception("Non ho trovato il fascicolo DEV2");
+                            }
+
+                            idFolder = System.Convert.ToInt32(dtFolder.Rows[0]["ID"]);
+                        }
+                    }
+
+                    // Inserisco il documento nel fascicolo
+                    _manager.ARX_DATI.Dm_FileInFolder_Insert(idFolder, dmProfileResult.PROFILE.DOCNUMBER);
+
+                    
                     MessageBox.Show(
                         "Store Ok. SystemId: " + dmProfileResult.PROFILE.DOCNUMBER,
                         "Store",
@@ -414,7 +441,7 @@ namespace ArxDev
             try
             {
                 // Recupero il profilo da modificare
-                Dm_Profile_ForUpdate profile = _manager.ARX_DATI.Dm_Profile_ForUpdate_GetNewInstance(920);
+                Dm_Profile_ForUpdate profile = _manager.ARX_DATI.Dm_Profile_ForUpdate_GetNewInstance(19);
 
                 profile.DocName = "Subject edited from C# application";
 
@@ -539,7 +566,8 @@ namespace ArxDev
                 ArxGenericException canDelete = _manager.ARX_SECURITY.Dm_Profile_Can_Delete_Advanced(docDeleteId);
                 if (canDelete.Exception != Security_Exception.Nothing)
                 {
-                    throw new Exception(canDelete.ErrorMessage);
+                    MessageBox.Show(canDelete.ErrorMessage, "Delete document", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
                 }
 
                 _manager.ARX_DATI.Dm_Profile_Delete(docDeleteId);
@@ -670,7 +698,7 @@ namespace ArxDev
                     profileSelect.CREATION_DATE.Selected = true;
                     profileSelect.CREATION_DATE.Index = 3;
 
-                    profileSearch.DocName.SetFilter(Dm_Base_Search_Operatore_String.Contiene, "test");
+                    profileSearch.DocName.SetFilter(Dm_Base_Search_Operatore_String.Contiene, "C#");
 
                     using (var ds = _manager.ARX_SEARCH.Dm_Profile_GetData(profileSearch, profileSelect, 0))
                     {
@@ -736,6 +764,22 @@ namespace ArxDev
 
             try
             {
+                //Dm_AllegatiDoc_Search allegatiSearch = new Dm_AllegatiDoc_Search();
+                //Dm_AllegatiDoc_Select allegatiSelect = new Dm_AllegatiDoc_Select();
+
+                //allegatiSelect.ID.Selected = true;
+                //allegatiSelect.NOMEFILE.Selected = true;
+
+                //allegatiSearch.DOCNUMBER.SetFilter(Dm_Base_Search_Operatore_Numerico.Uguale, 19);
+
+                //using (var dsAllegati = _manager.ARX_SEARCH.Dm_AllegatiDoc_GetData(allegatiSearch, allegatiSelect))
+                //{
+                //    var dtAllegati = dsAllegati.GetDataTable(0);
+                //    var idAllegato = System.Convert.ToInt32(dtAllegati.Rows[0]["ID"]);
+                //    var arxFileAllegato = _manager.ARX_DOCUMENTI.Dm_AllegatiDoc_GetDocument(idAllegato);
+                //}
+
+                               
                 using (var profileSelect = _manager.ARX_SEARCH.Dm_Profile_Select_Get_New_Instance_By_TipiDocumentoCodice("TEST.DEV"))
                 using (var profileSearch = _manager.ARX_SEARCH.Dm_Profile_Search_Get_New_Instance_By_TipiDocumentoCodice("TEST.DEV"))
                 {
@@ -760,10 +804,17 @@ namespace ArxDev
                     var lastIndex = 3;
                     for (int i = 0; i < profileSelect.Aggiuntivi.Length; i++)
                     {
+                        if (profileSelect.Aggiuntivi[i].Nome.StartsWith("MULTI"))
+                        {
+                            continue;
+                        }
+
                         lastIndex++;
                         profileSelect.Aggiuntivi[i].Selected = true;
                         profileSelect.Aggiuntivi[i].Index = lastIndex;
                     }
+
+
 
                     // Ricerca su campo numerico
                     Field_Double fDouble = profileSearch.Aggiuntivi.FirstOrDefault(x => String.Equals(x.ExternalId, "IMPORTO", StringComparison.CurrentCultureIgnoreCase)) as Field_Double;
@@ -772,27 +823,44 @@ namespace ArxDev
                         throw new Exception("Campo con externalId 'IMPORTO' non trovato");
                     }
                     fDouble.SetFilter(Dm_Base_Search_Operatore_Numerico.Maggiore, 1000);
-                    
-                    // Ricerca su campo stringa
-                    Field_String fString = profileSearch.Aggiuntivi.FirstOrDefault(x => String.Equals(x.ExternalId, "TARGA", StringComparison.CurrentCultureIgnoreCase)) as Field_String;
-                    if (fString == null)
-                    {
-                        throw new Exception("Campo con externalId 'TARGA' non trovato");
-                    }
-                    fString.SetFilter(Dm_Base_Search_Operatore_String.Contiene, "zr");
-                    fString.forceCaseInsensitive = true;
-                                        
+
+
+                    /*
+
+
+                   // Ricerca su campo stringa
+                   Field_String fString = profileSearch.Aggiuntivi.FirstOrDefault(x => String.Equals(x.ExternalId, "TARGA", StringComparison.CurrentCultureIgnoreCase)) as Field_String;
+                   if (fString == null)
+                   {
+                       throw new Exception("Campo con externalId 'TARGA' non trovato");
+                   }
+                   fString.SetFilter(Dm_Base_Search_Operatore_String.Contiene, "zr");
+                   fString.forceCaseInsensitive = true;
+
+
+                   // Ricerca su campo stringa
+                   Field_String fStringAgente = profileSearch.Aggiuntivi.FirstOrDefault(x => String.Equals(x.ExternalId, "COD_AGENTE", StringComparison.CurrentCultureIgnoreCase)) as Field_String;
+                   if (fStringAgente == null)
+                   {
+                       throw new Exception("Campo con externalId 'COD_AGENTE' non trovato");
+                   }
+                   fStringAgente.SetFilter(Dm_Base_Search_Operatore_String.Uguale, "AG_004");
+                   fStringAgente.forceCaseInsensitive = true;
+
+                   */
+
+
                     // Ricerca su campo data
                     Field_DateTime fData = profileSearch.Aggiuntivi.FirstOrDefault(x => String.Equals(x.ExternalId, "DATAA", StringComparison.CurrentCultureIgnoreCase)) as Field_DateTime;
                     if (fData == null)
                     {
                         throw new Exception("Campo con externalId 'DATAA' non trovato");
                     }
-                    DateTime dtFrom = DateTime.Now.Date;
-                    DateTime dtTo = DateTime.Now.Date.AddDays(1).AddSeconds(-1);
+                    DateTime dtFrom = new DateTime(2016, 05, 05, 0, 0, 0);
+                    DateTime dtTo = new DateTime(2016, 05, 05, 23, 59, 59);
                     fData.SetFilter(Dm_Base_Search_Operatore_Numerico.Compreso, dtFrom, dtTo);
 
-                     
+
                     // Ricerca su campo boolean
                     Field_Int fIntBool = profileSearch.Aggiuntivi.FirstOrDefault(x => String.Equals(x.ExternalId, "CONFINANZIAMENTO", StringComparison.CurrentCultureIgnoreCase)) as Field_Int;
                     if (fIntBool == null)
@@ -810,9 +878,53 @@ namespace ArxDev
                     fMv.AddValue("C#", Dm_Base_Search_Operatore_String.Uguale);
                     fMv.AddValue("DEV", Dm_Base_Search_Operatore_String.Uguale);
 
+
+
                     using (var ds = _manager.ARX_SEARCH.Dm_Profile_GetData(profileSearch, profileSelect, 0))
                     {
                         dgSearch.DataSource = ds.GetDataTable(0);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
+
+        private void buttonSearchFolder_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+
+            try
+            {
+
+                Dm_Fascicoli[] folderList = _manager.ARX_DATI.Dm_Fascicoli_GetData_By_Docnumber(21, "");
+                if (!folderList.Any())
+                {
+                    return;
+                }
+
+                var multiple = folderList.Select(f => f.ID.ToString()).Aggregate((x, y) => string.Format("{0};{1}", x, y));
+
+                using (var folderSelect = new Dm_Fascicoli_Select())
+                using (var folderSearch = new Dm_Fascicoli_Search())
+                {
+                    folderSelect.ID.Selected = true;
+                    folderSelect.NOME.Selected = true;
+
+                    folderSearch.ID.SetFilterMultiple(Dm_Base_Search_Operatore_Numerico.Uguale, multiple);
+
+
+                    using (var dsFolder = _manager.ARX_SEARCH.Dm_Fascicoli_GetData(folderSearch, folderSelect))
+                    {
+                        var dtFolder = dsFolder.GetDataTable(0);
+
+                        dgSearch.DataSource = dtFolder;
                     }
                 }
             }

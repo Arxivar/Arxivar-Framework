@@ -539,7 +539,8 @@ namespace ArxDev
                 ArxGenericException canDelete = _manager.ARX_SECURITY.Dm_Profile_Can_Delete_Advanced(docDeleteId);
                 if (canDelete.Exception != Security_Exception.Nothing)
                 {
-                    throw new Exception(canDelete.ErrorMessage);
+                    MessageBox.Show(canDelete.ErrorMessage, "Delete document", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
                 }
 
                 _manager.ARX_DATI.Dm_Profile_Delete(docDeleteId);
@@ -582,14 +583,17 @@ namespace ArxDev
                 var catRubricheList = _manager.ARX_DATI.Dm_CatRubriche_Get_Data("");
                 var generale = catRubricheList.First(x => string.Equals(x.RUBRICA, "GENERALE", StringComparison.CurrentCultureIgnoreCase));
 
-                var insert = new Dm_Rubrica_ForInsert
-                {
-                    CATEGORIA = generale.ID,
-                    RAGIONE_SOCIALE = "NEW ELEMENT",
-                    MAIL = "info@newelement.it",
-                    INDIRIZZO = "via XX Settembre",
-                    TEL = "0009900990996"
-                };
+                var insert = _manager.ARX_DATI.Dm_Rubrica_ForInsert_GetNewInstance_By_DmCatRubricheId(generale.ID);
+                insert.RAGIONE_SOCIALE = "NEW ELEMENT";
+                insert.MAIL = "info@newelement.it";
+                insert.INDIRIZZO = "via XX Settembre";
+                insert.TEL = "0009900990996";
+
+                var agg1String = insert.Aggiuntivi.FirstOrDefault(x => String.Equals(x.Nome, "agg1", StringComparison.CurrentCultureIgnoreCase)) as Aggiuntivo_String;
+                agg1String.Valore = "test1";
+
+                var agg2Int = insert.Aggiuntivi.FirstOrDefault(x => String.Equals(x.Nome, "agg2", StringComparison.CurrentCultureIgnoreCase)) as Aggiuntivo_Int;
+                agg2Int.Valore = 10;
 
                 var contact1 = new Dm_Contatti_ForInsert
                 {

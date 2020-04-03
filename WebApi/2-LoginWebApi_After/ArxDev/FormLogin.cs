@@ -33,10 +33,10 @@ namespace ArxDev
                 var authApi = new IO.Swagger.Api.AuthenticationApi(ApiUrl);
                 //Login to obtain a valid token (and a refresh token)
                 var reqdto = new AuthenticationTokenRequestDTO(
-                    textBoxUsername.Text, 
-                    textBoxPassword.Text,
-                    AppName,
-                    AppSecret);
+                    textBoxUsername.Text,  // Username
+                    textBoxPassword.Text, // Password
+                    AppName, // Application name
+                    AppSecret); // Application secret
                 AuthenticationTokenDTO resultToken = authApi.AuthenticationGetToken(reqdto);
 
                 _authToken = resultToken.AccessToken;

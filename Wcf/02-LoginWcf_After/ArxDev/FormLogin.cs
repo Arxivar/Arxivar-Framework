@@ -15,6 +15,7 @@ namespace ArxDev
 
         private const string AppName = "NEXTDEV";
         private const string AppSecret = "9D31F802ECD642C0";
+
         private const string WcfHost = "localhost";
         private const string WcfPort = "8740";
         private WCFConnectorManager _manager = null;
@@ -35,13 +36,14 @@ namespace ArxDev
                     Username = textBoxUsername.Text,
                     Password = textBoxPassword.Text
                 };
+
                 _manager = new WCFConnectorManager(wcfUrl, logonRequest)
                 {
-                    AutoChunk = true,
-                    AutoReconnect = true,
+                    AutoChunk = true,      //default a true
+                    AutoReconnect = true,  //default a true
                     Lang = "EN"
                 };
-                
+
                 _manager.ChannelOpening += _manager_ChannelOpening;
                 _manager.ChannelOpened += _manager_ChannelOpened;
 
