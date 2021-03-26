@@ -1,0 +1,1 @@
+Prendete la cartella "SviluppoCodiceJAR" e portatela in C:.
